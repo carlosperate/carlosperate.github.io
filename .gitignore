@@ -18,6 +18,6 @@ $RECYCLE.BIN/
 *.py[cod]
 __pycache__/
 
-# Pelican
-output/*
-cache/*
+# Pelican files for carlosperate
+carlosperate/output/*
+carlosperate/cache/*
