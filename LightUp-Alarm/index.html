@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Authors - Embedded Log</title>
+    <title>LightUp Alarm - Embedded Log</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,15 +10,16 @@
 
 
 
+<link rel="canonical" href="/LightUp-Alarm/index.html">
 
         <meta name="author" content="Carlos Perate" />
+        <meta name="description" content="This is a Clock Alarm System, with lights and mains socket switch control for the Raspberry Pi and Android. The system is made of two complementary projects: LightUpPi Alarm: The Alarm system running in a Raspberry Pi. It controls all the hardware triggered for the alarm alert, and provides multiple ways to interface with the system (Command line, web front and server backend). LightUpDroid Alarm: An Android alarm application. It connects to the LightUpPi Alarm server to synchronise alarms, but it is capable to trigger its local alarms without a connection to the LightUpPi Raspberry Pi system. LightUpPi It has been modularised into the following packages: LightUpAlarm: Completely independent Python package to manage alarms (create, edit, delete, and run alarms). LightUpHardware: Controls external hardware to complement the alarm ring, in this case controls the room lights, mains socket switch, and snooze functionality from a physical button. LightUpServer: Creates an HTTP ..." />
 
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="Embedded Log" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Embedded Log"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Embedded Log"/>
+    <meta property="og:site_name" content="Embedded Log" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="LightUp Alarm"/>
+    <meta property="og:url" content="/LightUp-Alarm/index.html"/>
+    <meta property="og:description" content="This is a Clock Alarm System, with lights and mains socket switch control for the Raspberry Pi and Android. The system is made of two complementary projects: LightUpPi Alarm: The Alarm system running in a Raspberry Pi. It controls all the hardware triggered for the alarm alert, and provides multiple ways to interface with the system (Command line, web front and server backend). LightUpDroid Alarm: An Android alarm application. It connects to the LightUpPi Alarm server to synchronise alarms, but it is capable to trigger its local alarms without a connection to the LightUpPi Raspberry Pi system. LightUpPi It has been modularised into the following packages: LightUpAlarm: Completely independent Python package to manage alarms (create, edit, delete, and run alarms). LightUpHardware: Controls external hardware to complement the alarm ring, in this case controls the room lights, mains socket switch, and snooze functionality from a physical button. LightUpServer: Creates an HTTP ..." />
 
 
     <!-- Bootstrap -->
@@ -77,13 +78,65 @@ Embedded Log            </a>
 <div class="container container_body">
     <div class="row">
         <div class="col-sm-9">
-        <ol class="breadcrumb">
-            <li><a href="" title="Embedded Log"><i class="fa fa-home fa-lg"></i></a></li>
-            <li class="active">Authors</li>
-        </ol>
+    <ol class="breadcrumb">
+        <li><a href="" title="Embedded Log"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="active">LightUp Alarm</li>
+    </ol>
 
-    <h1>Authors on Embedded Log</h1>
-        <li><a href="/author/carlos-perate.html">Carlos Perate</a> (2)</li>
+    <section id="content" class="body">
+        <h1 class="entry-title">LightUp Alarm</h1>
+        
+        <div class="entry-content">
+            <p>This is a Clock Alarm System, with lights and mains socket switch control for the Raspberry Pi and Android.</p>
+<p>The system is made of two complementary projects:</p>
+<p><strong>LightUpPi Alarm</strong>: The Alarm system running in a Raspberry Pi. It controls all the hardware triggered for the alarm alert, and provides multiple ways to interface with the system (Command line, web front and server backend).</p>
+<p><strong>LightUpDroid Alarm</strong>: An Android alarm application. It connects to the LightUpPi Alarm server to synchronise alarms, but it is capable to trigger its local alarms without a connection to the LightUpPi Raspberry Pi system.</p>
+<h2>LightUpPi</h2>
+<p>It has been modularised into the following packages:</p>
+<ul>
+<li><strong>LightUpAlarm</strong>: Completely independent Python package to manage alarms (create, edit, delete, and run alarms).</li>
+<li><strong>LightUpHardware</strong>: Controls external hardware to complement the alarm ring, in this case controls the room lights, mains socket switch, and snooze functionality from a physical button.</li>
+<li><strong>LightUpServer</strong>: Creates an HTTP server to interface with the LightUpAlarm system using a web interface or JSON (used in the LightUpDroid Android app).</li>
+<li><strong>LightUpWeb</strong>: Front-end web interface for the LightUpServer. </li>
+</ul>
+<p>Additionally, an Android application can be used to interface with the LightUpPi Alarm system. For more information about this app please visit its repository: <a href="https://github.com/carlosperate/LightUpDroid-Alarm">LightUpDrop Alarm</a></p>
+<h3>Installing LightUpPi Alarm</h3>
+<p>This application has been been develop to run a Raspberry Pi with Python 2.7. The project currently aims to maintain compatibility with Python 3. </p>
+<p>Install the dependencies described below. Then download this repository, by clicking <a href="https://github.com/carlosperate/LightUpPi-Alarm/archive/master.zip">here</a> or running the following in the command line:</p>
+<div class="highlight"><pre>git clone git://github.com/carlosperate/LightUpPi-Alarm.git
+</pre></div>
+
+
+<h4>Dependencies</h4>
+<p>Each one of the Python packages has its own dependencies, please read their respective READMEs:
+<em> LightUpAlarm <a href="https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpAlarm/README.md">README</a>
+</em> LightUpServer <a href="https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpServer/README.md">README</a>
+* LightUpHardware <a href="https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpHardware/README.md">README</a></p>
+<h3>Running LightUpPi Alarm</h3>
+<p>There are two different ways to run LightUpPi Alarm:</p>
+<ol>
+<li>Using the command line using, by launching the application with the <code>-c</code> flag:</li>
+</ol>
+<p><code>python main.py -c</code></p>
+<p><img src="http://carlosperate.github.com/LightUpPi-Alarm/screenshots/screenshot_cli_1.png" alt="CLI screenshot" width="60%"></p>
+<p>Instructions about how to use the CLI can be found in the LightUpAlarm package <a href="https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpAlarm/README.md">README</a>.</p>
+<ol>
+<li>Or using the web interface, by launching the program with the <code>-s</code> flag:</li>
+</ol>
+<p><code>python main.py -s</code></p>
+<p>And then pointing your browser to the following adddress: <code>http://raspberrypi.local/LightUpPi</code> or using the <a href="https://github.com/carlosperate/LightUpDroid-Alarm">LightUpDroid</a> app.</p>
+<h2>LightUpDroid</h2>
+<p>This is an Android companion app for the <a href="https://github.com/carlosperate/LightUpPi-Alarm">LightUpPi Alarm</a>.</p>
+<p>It is an Android alarm app that synchronizes to the alarms running in the <code>LightUpPi Alarm</code> Raspberry Pi system.</p>
+<p>It is based on the <a href="https://github.com/klinker41/alarm-clock">Alarm Clock</a> app by Jacob Klinker, which in turn is a modification of the official Android Open Source Project <a href="https://android.googlesource.com/platform/packages/apps/DeskClock/">DeskClock</a> (updated for backwards compatibility).</p>
+<p><img src="https://raw.githubusercontent.com/carlosperate/LightUpDroid-Alarm/master/screenshots/clock.png" alt="Clock Screen" width="24%"> 
+<img src="https://raw.githubusercontent.com/carlosperate/LightUpDroid-Alarm/master/screenshots/alarms.png" alt="Alarms Screen" width="24%"> 
+<img src="https://raw.githubusercontent.com/carlosperate/LightUpDroid-Alarm/master/screenshots/timepicker.png" alt="Timepicker Screen" width="24%"> 
+<img src="https://raw.githubusercontent.com/carlosperate/LightUpDroid-Alarm/master/screenshots/settings.png" alt="Settings Screen" width="24%"> </p>
+<h2>License</h2>
+<p>This project is licensed under The MIT License (MIT), a copy of which can be found in the <code>LICENSE</code> file.</p>
+        </div>
+    </section>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
