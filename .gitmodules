@@ -1,0 +1,15 @@
+[submodule "themes/pure-single"]
+	path = themes/pure-single
+	url = https://github.com/PurePelicanTheme/pure-single.git
+[submodule "themes/nest"]
+	path = themes/nest
+	url = https://github.com/molivier/nest.git
+[submodule "themes/pelican-bootstrap3"]
+	path = themes/pelican-bootstrap3
+	url = https://github.com/DandyDev/pelican-bootstrap3.git
+[submodule "themes/pelican-octopress-theme"]
+	path = themes/pelican-octopress-theme
+	url = https://github.com/duilio/pelican-octopress-theme.git
+[submodule "themes/foundation-default-colours"]
+	path = themes/foundation-default-colours
+	url = https://github.com/FuzzyWuzzie/foundation-default-colours.git

@@ -15,9 +15,8 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # Python
+*.pid
 *.py[cod]
 __pycache__/
 
-# Pelican files for carlosperate
-carlosperate/output/*
-carlosperate/cache/*
+# Other project files
