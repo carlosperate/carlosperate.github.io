@@ -110,23 +110,33 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                        {% for p in PAGES %}
+                            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">
+                             {{ p.menulabel|default(p.title) }}
+                            </a></li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                        {% for cat, null in categories %}
+                            <li {% if cat == category %}class="active"{% endif %}>
+                                <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
                 {% for title, link in MENUITEMS %}
                     <li><a href="{{ link }}">{{ title }}</a></li>
                 {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    {% for p in PAGES %}
-                         <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">
-                             {{ p.menulabel|default(p.title) }}
-                          </a></li>
-                      {% endfor %}
-                {% endif %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                    {% for cat, null in categories %}
-                        <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
             {% if 'tipue_search' in PLUGINS %}

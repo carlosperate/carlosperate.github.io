@@ -2,9 +2,15 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+# This variable is used for debug purposes
+DEPLOY_RUN = False
+
 AUTHOR = u'Carlos Perate'
 SITENAME = u'Embedded Log'
-SITEURL = ''
+if DEPLOY_RUN is True:
+    SITEURL = 'http://www.embeddedlog.com'
+else:
+    SITEURL = ''
 GOOGLE_ANALYTICS = 'UA-58081399-1'
 
 PATH = 'content'
@@ -27,6 +33,10 @@ LOAD_CONTENT_CACHE = False
 
 DISPLAY_BREADCRUMBS = True
 
+SHARIFF = True
+SHARIFF_LANG = 'en'
+SHARIFF_SERVICES = '[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;xing&quot;,&quot;whatsapp&quot;]'
+
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'blog'
 
@@ -37,13 +47,9 @@ BANNER = 'images/banner.jpg'
 BANNER_SUBTITLE = 'This is my subtitle'
 
 # Menu
-DISPLAY_PAGES_ON_MENU = False
-DISPLAY_CATEGORIES_ON_MENU = False
-MENUITEMS = (('Blog', '/category/blog.html'),
-             ('Ardublockly', '/ardublockly/index.html'),
-             ('LightUp Alarm', '/LightUp-Alarm/index.html'),
-             ('Pebble QuickHue', '/PebbleQuickHue/index.html'),
-             ('About', '/about/index.html'),)
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
+MENUITEMS = (('About', 'http://www.embeddedlog.com/about/index.html'),)
 
 # Sidebar
 DISPLAY_CATEGORIES_ON_SIDEBAR = True
@@ -79,6 +85,6 @@ AUTHOR_FEED_RSS = None
 
 # Plugins
 PLUGIN_PATHS = ["plugins", "../plugins"]
-PLUGINS = ["related_posts"]
+PLUGINS = ["related_posts", "pelican_youtube"]
 
 RELATED_POSTS_MAX = 5

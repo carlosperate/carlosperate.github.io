@@ -1,14 +1,20 @@
-html {
+html,
+body {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 17px !important;
-    line-height: 1.9 !important;
+    line-height: 1.8 !important;
 }
 
 body {
-    padding-top: 70px;
     background-image: url("/images/background_tile.png");
-    font-size: 1rem;
-    line-height: 1.8 !important;
+}
+
+/* Reduce font size on lower resolutions */
+@media (max-width: 768px) {
+    html, body {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
 }
 
 #sidebar {
@@ -266,4 +272,26 @@ figure.floatcenter, .align-center {
     border-radius: 3px;
     background: #FFFFFF !important;
     padding: 16px 32px 0px 32px;
+}
+
+@media (max-width: 768px) {
+    .container_body,
+    .container_footer {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+/* Navigation bar drop down on mouse over */
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+ul.nav li:hover {
+    background-color: #1A242F !important;
+}
+.dropdown-menu>li>a {
+    color: #1A242F;
+}
+.dropdown-menu>li>a:hover {
+    color: #7b8a8b;
 }
