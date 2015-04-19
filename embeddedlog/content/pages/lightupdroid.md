@@ -1,6 +1,7 @@
 Title: LightUpDroid Alarm
 Slug: LightUpDroid-Alarm
 page-order: 3
+carousel: 1
 
 
 This is an Android companion app for the [LightUpPi Alarm](https://github.com/carlosperate/LightUpPi-Alarm).

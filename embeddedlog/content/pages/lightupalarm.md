@@ -1,6 +1,7 @@
 Title: LightUp Alarm
 Slug: LightUp-Alarm
 page-order: 2
+carousel: 1
 
 
 This is a Clock Alarm System, with lights and mains socket switch control for the Raspberry Pi and Android.

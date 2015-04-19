@@ -37,9 +37,9 @@
     {% if DISPLAY_BREADCRUMBS %}
     <ol class="breadcrumb">
         <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-	  {% if page.url %}
+      {% if page.url %}
         <li class="active">{{ page.title }}</li>
-	  {% endif %}
+      {% endif %}
     </ol>
     {% endif %}
 {% endblock %}
@@ -64,15 +64,19 @@
 {% endblock %}
 
 {% block scripts %}
-    {% if page.illustration %}
-        <script type="text/javascript">
-            /** Changes the background image for that  */
-            window.addEventListener("load", function() {
-                // The banner.html adss the banner as an embedded css style, so this
-                // should not cause any conflicts, but replace the value in the DOM.
-                banner = document.getElementById("banner");
-                banner.style.backgroundImage = "url('{{ SITEURL}}/{{ page.illustration }}')";
-            });
-        </script>
+    {% if page.carousel %}
+    <!-- Banner carousel control -->
+    <script type="text/javascript">
+        /** Stops the carousel and sets it to a specific project */
+        window.addEventListener("load", function() {
+            $(".carousel").carousel({{ page.carousel }});
+            $(".carousel").carousel('pause');
+            $("#carousel-control-prev").css("visibility", "hidden");
+            $("#carousel-control-next").css("visibility", "hidden");
+            $("#carousel-indicators").css("display", "none");
+            $(".carousel-indicators-placeholder").css("display", "none");
+        });
+    </script>
+    <!-- End Banner carousel control -->
     {% endif %}
 {% endblock %}

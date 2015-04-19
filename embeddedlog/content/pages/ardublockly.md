@@ -2,6 +2,7 @@ Title: Ardublockly
 Slug: ardublockly
 Illustration: images/ardublockly/ardublockly_banner.png
 page-order: 1
+carousel: 0
 
 
 Ardublockly is a visual programming editor for Arduino. It is based on Google's [Blockly][1], which has been forked to generate [Arduino](http://www.arduino.cc/) code.

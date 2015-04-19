@@ -1,16 +1,107 @@
 <style>
-	#banner{
-	    background-image:url("{{ SITEURL}}/{{ BANNER }}");
-	}
+    #banner{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("{{ SITEURL}}/{{ BANNER }}");
+    }
+    .carousel-one{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("{{ SITEURL}}/images/ardublockly/ardublockly_banner.png");
+    }
+    .carousel-two{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("{{ SITEURL}}/images/banner.jpg");
+    }
+    .carousel-three{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("{{ SITEURL}}/images/");
+    }
 </style>
 
 <div id="banner">
-	<div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
-		<div class="copy">
-			<h1>{{ SITENAME }}</h1>
-			{% if BANNER_SUBTITLE %}
-				<p class="intro">{{ BANNER_SUBTITLE }}</p>
-			{% endif %}
-		</div>
-	</div>
+    <div id="carousel-projects" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators" id="carousel-indicators">
+            <li data-target="#carousel-projects" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-projects" data-slide-to="1"></li>
+            <li data-target="#carousel-projects" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active carousel-base carousel-one">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <a href="{{ SITEURL}}/ardublockly/index.html"><h2>Ardublockly</h2>
+                            Visual Programming for Arduino</a>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly/releases"><span class="fa fa-windows"></span>Download for Windows</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly"><span class="fa fa-github"></span>View on GitHub</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly/archive/master.zip"><span class="fa fa-file-zip-o"></span>Download Source code</a>
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item carousel-base carousel-two">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <a href="{{ SITEURL}}/LightUp-Alarm/index.html"><h2>LightUp Alarm</h2>
+                            Raspberry Pi &amp; Android Alarm system with sunrise and other hardware control</a>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/releases"><span class="fa fa-android"></span>Android App</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm"><span class="fa fa-github"></span>View on GitHub</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/archive/master.zip"><span class="fa fa-linux"></span>Download Raspberry Pi code</a> 
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item carousel-base carousel-three">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <a href="{{ SITEURL}}/PebbleQuickHue/index.html"><h2>QuickHue for Pebble</h2>
+                            Hue Lights control from Pebble smarthphone</a>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue/raw/master/bin/QuickHue.pbw"><span class="fa fa-clock-o"></span>Download for Pebble</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue"><span class="fa fa-github"></span>View on GitHub</a>
+                            <a  class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue/archive/master.zip"><span class="fa fa-file-zip-o"></span>Download Source code</a>
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-projects" role="button" data-slide="prev" id="carousel-control-prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-projects" role="button" data-slide="next" id="carousel-control-next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>

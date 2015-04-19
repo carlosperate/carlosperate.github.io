@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block canonical_rel %}
-<link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
+    <link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -104,20 +104,25 @@
     {% endif %}
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ ADDTHIS_PROFILE }}"></script>
 {% endif %}
+
 {% if SHARIFF|default(false) %}
     <!-- add shariff support -->
     <script src="{{ SITEURL }}/theme/js/shariff.min.js"></script>
 {% endif %}
 
-{% if article.illustration %}
+{% if article.carousel %}
+    <!-- Banner carousel control -->
     <script type="text/javascript">
-        /** Changes the background image for that  */
+        /** Stops the carousel and sets it to a specific project */
         window.addEventListener("load", function() {
-            // The banner.html adss the banner as an embedded css style, so this
-            // should not cause any conflicts, but replace the value in the DOM.
-            banner = document.getElementById("banner");
-            banner.style.backgroundImage = "url('{{ SITEURL}}/{{ article.illustration }}')";
+            $(".carousel").carousel({{ page.carousel }});
+            $(".carousel").carousel('pause');
+            $("#carousel-control-prev").css("visibility", "hidden");
+            $("#carousel-control-next").css("visibility", "hidden");
+            $("#carousel-indicators").css("display", "none");
+            $(".carousel-indicators-placeholder").css("display", "none");
         });
     </script>
+    <!-- End Banner carousel control -->
 {% endif %}
 {% endblock %}

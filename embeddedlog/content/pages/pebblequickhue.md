@@ -1,6 +1,7 @@
 Title: QuickHue for Pebble
 Slug: PebbleQuickHue
 page-order: 4
+carousel: 2
 
 
 Pebble app to facilitate quick control of a Philips Hue light bulb.
