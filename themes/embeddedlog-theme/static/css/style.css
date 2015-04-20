@@ -17,37 +17,12 @@ body {
     }
 }
 
-#sidebar {
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-#sidebar .list-group, #sidebar .list-group-item {
-    background-color: transparent;
-}
-
-/* for list-groups nested within a list-group-item, add some extra
-   padding to separate sections*/
-.list-group-item > .list-group {
+hr {
+    margin-top: 16px;
     margin-bottom: 16px;
-}
-
-/* for list-group-items nested within a list-group-item, reset the bottom
-   padding of the last item, b/c the containing item has paddimg already 
- */
-.list-group-item .list-group-item:last-child {
-    padding-bottom: 0px;
-}
-
-.list-group-item .list-group-item {
-    font-size: 1rem;
-    line-height: 1.2;
-    padding-left: 8px;
-}
-
-.list-group-item {
-    border: none;
-    padding: 6px 12px;
+    border: 0;
+    border-top: 1px solid #ECF0F1;
+    border-bottom: 2px solid #FFFFFF;
 }
 
 .tag-0 {
@@ -75,31 +50,6 @@ body {
     padding-bottom: 5px;
     -ms-word-break: normal;
     word-break: normal;
-}
-
-#sidebar {
-    padding-top: 0px;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-}
-
-#sidebar a {
-    color: inherit;
-}
-
-.icon-label {
-    margin-left: 10px;
-}
-
-/* Example for how to control spacing between icon and label in specific
-   lists in the sidebar. To change, override in your CUSTOM_CSS           */
-#sidebar #social i {
-    margin-right: 3px;
 }
 
 a, a:hover {
@@ -199,14 +149,34 @@ figure.floatcenter, .align-center {
     padding: 0px;
 }
 
-/* Bootstrap navbar updated to add shadow */
+/****************************/
+/* Bootstrap navbar updates */
+/****************************/
+/* Add shadow */
 .navbar {
     -webkit-box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
 }
 
-/* Banner */
+/* Navigation bar drop down on mouse over */
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+ul.nav li:hover {
+    background-color: #1A242F !important;
+}
+.dropdown-menu>li>a {
+    color: #1A242F;
+}
+.dropdown-menu>li>a:hover {
+    color: #7b8a8b;
+}
+
+
+/****************/
+/* Banner Style */
+/****************/
 #banner {
     background-repeat: no-repeat;
     background-position: top center;
@@ -261,43 +231,10 @@ figure.floatcenter, .align-center {
     }
 }
 
-/* Addtions to containers due to new background image */
-.container_body {
-    border-radius: 3px;
-    background: #FFFFFF !important;
-    padding: 32px 32px;
-}
 
-.container_footer {
-    border-radius: 3px;
-    background: #FFFFFF !important;
-    padding: 16px 32px 0px 32px;
-}
-
-@media (max-width: 768px) {
-    .container_body,
-    .container_footer {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-}
-
-/* Navigation bar drop down on mouse over */
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;
-}
-ul.nav li:hover {
-    background-color: #1A242F !important;
-}
-.dropdown-menu>li>a {
-    color: #1A242F;
-}
-.dropdown-menu>li>a:hover {
-    color: #7b8a8b;
-}
-
-
-/* Carousel formatting */
+/*************************************/
+/* Carousel within banner formatting */
+/*************************************/
 .carousel-base {
     background-repeat: no-repeat;
     background-position: top center;
@@ -369,4 +306,98 @@ ul.nav li:hover {
 .table_row_buttons a {
     padding: 8px 16px;
     margin-top: 6px;
+}
+
+
+/*******************/
+/* Sidebar styling */
+/*******************/
+#sidebar {
+    padding-top: 0px;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+#sidebar a {
+    color: inherit;
+}
+
+#sidebar .list-group, #sidebar .list-group-item {
+    background-color: transparent;
+}
+
+.icon-label {
+    margin-left: 10px;
+}
+
+/* Example for how to control spacing between icon and label in specific
+   lists in the sidebar. To change, override in your CUSTOM_CSS */
+#sidebar #social i {
+    margin-right: 3px;
+}
+
+/* Profile picture style next to  the Social section in the sidebar */
+.profile_pic {
+    background-size: 32px 32px;
+    border-radius: 50%;
+    display: block;
+    margin: 5px;
+    margin: 5px 0px 0px -2px;
+    height: 32px;
+    width: 32px;
+    float: left;
+}
+
+/* for list-groups nested within a list-group-item, add some extra
+   padding to separate sections*/
+.list-group-item > .list-group {
+    margin-bottom: 16px;
+}
+
+/* for list-group-items nested within a list-group-item, reset the bottom
+   padding of the last item, b/c the containing item has paddimg already */
+.list-group-item .list-group-item:last-child {
+    padding-bottom: 0px;
+}
+
+.list-group-item .list-group-item {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    padding-left: 8px;
+}
+
+.list-group-item {
+    border: none;
+    padding: 6px 12px;
+}
+
+
+/*******************************************************/
+/* Additions to containers due to new background image */
+/*******************************************************/
+.container_body {
+    border-radius: 3px;
+    background: #FFFFFF !important;
+    padding: 32px 32px;
+}
+
+.container_footer {
+    border-radius: 3px;
+    background: #FFFFFF !important;
+    padding: 16px 32px 0px 32px;
+}
+
+@media (max-width: 768px) {
+    .container_body,
+    .container_footer {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
 }
