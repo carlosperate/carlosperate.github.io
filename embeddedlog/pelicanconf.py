@@ -53,7 +53,7 @@ PAGE_ORDER_BY = 'page-order'
 #CATEGORY_SAVE_AS = '{category}/{slug}.html'
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
-SUMMARY_MAX_LENGTH = 150
+SUMMARY_MAX_LENGTH = 50
 
 # Both pages and categories
 BANNER_ALL_PAGES = True

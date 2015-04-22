@@ -17,12 +17,39 @@ body {
     }
 }
 
+.page-header {
+    padding-bottom: 0px;
+    margin-bottom: 16px;
+    border-bottom: none;
+}
+h1{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+h2 {
+    margin-top: 48px;
+}
+h3 {
+    margin-top: 32px;
+}
+h4 {
+    margin-top: 24px;
+}
+
 hr {
     margin-top: 16px;
     margin-bottom: 16px;
     border: 0;
     border-top: 1px solid #ECF0F1;
     border-bottom: 2px solid #FFFFFF;
+}
+
+/* Modifying the article info */
+.post-info > .label {
+  margin-right: 8px;
+}
+.published {
+  margin-right: 24px;
 }
 
 .tag-0 {
@@ -173,6 +200,14 @@ ul.nav li:hover {
     color: #7b8a8b;
 }
 
+/* Anchor links need to account for navigation bar padding */
+.anchor {
+    display: block;
+    position: relative;
+    top: -48px;
+    visibility: hidden;
+}
+
 
 /****************/
 /* Banner Style */
@@ -269,7 +304,7 @@ ul.nav li:hover {
     padding-top: 24px;
     padding-bottom: 12px;
 }
-.fa {
+.carousel-content .fa {
     padding-right: 16px;
     font-size: 1.2rem;
 }
