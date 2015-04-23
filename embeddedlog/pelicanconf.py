@@ -37,9 +37,8 @@ TAG_CLOUD_MAX_ITEMS = 10
 SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('twitter', 'https://twitter.com/carlosperate'),
           ('google+', 'https://plus.google.com/109111328639820363664'),)
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),)
+LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
+         ('Embedded.fm podcast', 'http://embedded.fm'),)
 
 
 # Pages data
