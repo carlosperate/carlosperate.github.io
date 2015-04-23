@@ -1,5 +1,5 @@
 Title: LightUp Alarm
-Slug: LightUp-Alarm
+Slug: LightUpPi-Alarm
 page-order: 2
 carousel: 1
 
@@ -45,21 +45,21 @@ There are two different ways to run LightUpPi Alarm:
 
 1. Using the command line using, by launching the application with the `-c` flag:
 
-   ```
-   python main.py -c
-   ```
-
-   <img src="http://carlosperate.github.com/LightUpPi-Alarm/screenshots/screenshot_cli_1.png" alt="CLI screenshot" width="60%">
-
-   Instructions about how to use the CLI can be found in the LightUpAlarm package [README](https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpAlarm/README.md).
+    ```
+    python main.py -c
+    ```
+    
+    Instructions about how to use the CLI can be found in the LightUpAlarm package [README](https://github.com/carlosperate/LightUpPi-Alarm/blob/master/LightUpAlarm/README.md).
+    
+    <img src="http://carlosperate.github.com/LightUpPi-Alarm/screenshots/screenshot_cli_1.png" alt="CLI screenshot" width="60%">
 
 2. Or using the web interface, by launching the program with the `-s` flag:
 
-   ```
-   python main.py -s
-   ```
-
-   And then pointing your browser to the following adddress: ` http://raspberrypi.local/LightUpPi ` or using the [LightUpDroid](https://github.com/carlosperate/LightUpDroid-Alarm) app.
+    ```
+    python main.py -s
+    ```
+    
+    And then pointing your browser to the following adddress: ` http://raspberrypi.local/LightUpPi ` or using the [LightUpDroid](https://github.com/carlosperate/LightUpDroid-Alarm) app.
 
 
 ## LightUpDroid
