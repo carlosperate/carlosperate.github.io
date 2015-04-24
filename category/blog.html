@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
->
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
     <title>Blog - Embedded Log</title>
     <!-- Using the latest rendering mode for IE -->
@@ -11,7 +12,7 @@
 
 
 
-    <meta name="author" content="Carlos Perate" />
+    <meta name="author" content="carlosperate" />
     <meta name="keywords" content="Blog" />
 
     <!-- Open Graph tags -->
@@ -65,17 +66,7 @@ Embedded Log            </a>
                             </a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="active">
-                                <a href="http://www.embeddedlog.com/category/blog.html">Blog</a>
-                            </li>
-                            <li >
-                                <a href="http://www.embeddedlog.com/category/test-cat.html">Test cat</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <li><a href="http://www.embeddedlog.com/category/blog.html">Blog</a></li>
                     <li><a href="http://www.embeddedlog.com/about/index.html">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -153,12 +144,12 @@ Embedded Log            </a>
                     <div class="table_div">
                         <div class="table_row_text">
                             <a href="http://www.embeddedlog.com/LightUp-Alarm/index.html"><h2>LightUp Alarm</h2>
-                            Raspberry Pi &amp; Android Alarm system with sunrise and other hardware control</a>
+                            Raspberry Pi Alarm Clock with sunrise light, coffee machine control, physical snooze button, and Android companion app</a>
                         </div>
                         <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/archive/master.zip"><span class="fa fa-linux"></span>Raspberry Pi Software</a>
                             <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/releases"><span class="fa fa-android"></span>Android App</a>
                             <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm"><span class="fa fa-github"></span>View on GitHub</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/archive/master.zip"><span class="fa fa-linux"></span>Raspberry Pi code</a> 
                         </div>
                         <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
                     </div>
@@ -203,17 +194,9 @@ Embedded Log            </a>
     </ol>
 
             <article>
-                <h2><a href="http://www.embeddedlog.com/my-test-post-2.html">My second test title</a></h2>
-                <div class="summary"><p>This is the content of my second test blog post.</p>
-                    <a class="btn btn-default btn-xs" href="http://www.embeddedlog.com/my-test-post-2.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="http://www.embeddedlog.com/my-test-post.html">My test title</a></h2>
-                <div class="summary"><p>This is the content of my test blog post.</p>
-<p><img alt="test image" src="/images/sidenav_header.png" /></p>
-                    <a class="btn btn-default btn-xs" href="http://www.embeddedlog.com/my-test-post.html">more ...</a>
+                <h2><a href="http://www.embeddedlog.com/static-docs-from-github-wiki.html">Build static documentation from a GitHub Wiki</a></h2>
+                <div class="summary"><p>This article describes how to use Python and MkDocs to generate static pages for documentation written in a GitHub Wiki. This can be useful to take advantage of the GitHub Wiki features and still provide offline access to the information in a user friendly format that can be easily embedded as a help file.</p>
+                    <a class="btn btn-default btn-xs" href="http://www.embeddedlog.com/static-docs-from-github-wiki.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -224,7 +207,7 @@ Embedded Log            </a>
 
 <section class="well well-sm">
     <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+            <li class="list-group-item"><img src="http://www.embeddedlog.com/images/theming/profile.jpg" class="profile_pic" /><h4><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
                 <li class="list-group-item"><a href="https://github.com/carlosperate"><i class="fa fa-github-square fa-lg"></i> github</a></li>
                 <li class="list-group-item"><a href="https://twitter.com/carlosperate"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
@@ -235,41 +218,27 @@ Embedded Log            </a>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
-                        <a href="http://www.embeddedlog.com/my-test-post-2.html">
-                            My second test title
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.embeddedlog.com/my-test-post.html">
-                            My test title
+                        <a href="http://www.embeddedlog.com/static-docs-from-github-wiki.html">
+                            Build static documentation from a GitHub Wiki
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="list-group-item"><a href="http://www.embeddedlog.com/"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
-                <ul class="list-group" id="categories">
-                    <li class="list-group-item">
-                        <a href="http://www.embeddedlog.com/category/blog.html">
-                            <i class="fa fa-folder-open fa-lg"></i> Blog
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.embeddedlog.com/category/test-cat.html">
-                            <i class="fa fa-folder-open fa-lg"></i> Test Cat
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
             <li class="list-group-item"><a href="http://www.embeddedlog.com/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-1">
-                        <a href="http://www.embeddedlog.com/tag/test.html">
-                            test
+                    <li class="list-group-item tag-4">
+                        <a href="http://www.embeddedlog.com/tag/documentation.html">
+                            documentation
                         </a>
                     </li>
-                    <li class="list-group-item tag-1">
+                    <li class="list-group-item tag-4">
+                        <a href="http://www.embeddedlog.com/tag/web-tech.html">
+                            web-tech
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
                         <a href="http://www.embeddedlog.com/tag/github.html">
                             github
                         </a>
@@ -286,18 +255,13 @@ Embedded Log            </a>
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
       <ul class="list-group" id="links">
         <li class="list-group-item">
-            <a href="http://getpelican.com/" target="_blank">
-                Pelican
+            <a href="http://www.theamphour.com" target="_blank">
+                The Amp Hour podcast
             </a>
         </li>
         <li class="list-group-item">
-            <a href="http://python.org/" target="_blank">
-                Python.org
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://jinja.pocoo.org/" target="_blank">
-                Jinja2
+            <a href="http://embedded.fm" target="_blank">
+                Embedded.fm podcast
             </a>
         </li>
       </ul>
@@ -312,10 +276,14 @@ Embedded Log            </a>
    <div class="container">
       <hr>
       <div class="row container_footer">
-         <div class="col-xs-10">&copy; 2015 <a href="https://github.com/carlosperate" target="_blank">Carlos Perate</a>
+         <div class="col-xs-10">&copy; 2015 <a href="https://github.com/carlosperate" target="_blank">carlosperate</a>
             &middot; Powered by 
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> and 
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  <!--a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a-->
+</small></p>
+         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
