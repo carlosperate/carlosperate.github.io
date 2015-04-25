@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 # This variable is used for debug purposes
-DEPLOY_RUN = False
+DEPLOY_RUN = True
 
 # Website data
 AUTHOR = u'carlosperate'
@@ -16,6 +16,7 @@ CC_LICENSE = 'CC-BY'
 # Paths data
 if DEPLOY_RUN is True:
     SITEURL = 'http://www.embeddedlog.com'
+    RELATIVE_URLS = False
 else:
     SITEURL = ''
     RELATIVE_URLS = True
