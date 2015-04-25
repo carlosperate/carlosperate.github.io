@@ -1,6 +1,5 @@
 Title: Ardublockly
 Slug: ardublockly
-Illustration: images/ardublockly/ardublockly_banner.png
 page-order: 1
 carousel: 0
 
