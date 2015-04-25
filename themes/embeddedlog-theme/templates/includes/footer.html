@@ -7,16 +7,22 @@
          {% else %}
             {% set copy_date = '' %}
          {% endif %}
-         <div class="col-xs-10">&copy; {{ copy_date }} <a href="https://github.com/carlosperate" target="_blank">{{ AUTHOR }}</a>
-            &middot; Powered by 
-            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> and 
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
-            {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
-              {% from 'includes/cc-license.html' import cc_license_mark %}
-              <p><small>{{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL}) }}</small></p>
-            {% endif %}
+         <div class="col-xs-9">
+            <p>
+               &copy; {{ copy_date }} <a href="https://github.com/carlosperate" target="_blank">{{ AUTHOR }}</a>
+               &middot; Powered by 
+               <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> and 
+               <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+            </p>
+            <p><small>
+               {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
+                 {% from 'includes/cc-license.html' import cc_license_mark %}
+                 {{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL}) }}
+               {% endif %}
+               Attribution for all other resources used can be found <a href="{{ SITEURL}}/credits/index.html">here.</a>
+            </small></p>
          </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+         <div class="col-xs-3"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
 </footer>
