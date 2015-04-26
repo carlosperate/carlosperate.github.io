@@ -1,0 +1,13 @@
+List of files to keep when copying over pelican project:
+/.git
+/lightupalarm
+/lightup-alarm
+/lightuppi
+/lightuppi-alarm
+/pebblequickhue
+/quickhue
+CNAME
+keep.txt
+
+Other:
+404.html froms /404/index.html
