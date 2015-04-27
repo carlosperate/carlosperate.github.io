@@ -5,7 +5,7 @@
             <p class="list-group-item">Status updating...</p>
         </div>
         {% if GITHUB_SHOW_USER_LINK is defined %}
-            <a href="https://github.com/{{ GITHUB_USER }}">@{{ GITHUB_USER }}</a> on GitHub
+            <a href="https://github.com/{{ GITHUB_USER }}" target="_blank">@{{ GITHUB_USER }}</a> on GitHub
         {% endif %}
     </li>
 {% endif %}
