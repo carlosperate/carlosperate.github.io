@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 # This variable is used for debug purposes
-DEPLOY_RUN = True
+DEPLOY_RUN = False
 
 # Website data
 AUTHOR = u'carlosperate'
@@ -26,8 +26,8 @@ STATIC_PATHS = ['images']
 # Menu
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = False
-MENUITEMS = (('Blog', 'http://www.embeddedlog.com/category/blog.html'),
-             ('About', 'http://www.embeddedlog.com/about/index.html'),)
+MENUITEMS = (('Blog', SITEURL + '/category/blog.html'),
+             ('About', SITEURL + '/about/index.html'),)
 
 # Sidebar
 DISPLAY_CATEGORIES_ON_SIDEBAR = False
