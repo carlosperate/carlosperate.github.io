@@ -384,8 +384,7 @@ ul.nav li:hover {
     background-size: 32px 32px;
     border-radius: 50%;
     display: block;
-    margin: 5px;
-    margin: 5px 0px 0px -2px;
+    margin: 15px 0px 0px -2px;
     height: 32px;
     width: 32px;
     float: left;
