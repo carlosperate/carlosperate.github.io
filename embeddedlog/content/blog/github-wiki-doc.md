@@ -16,19 +16,9 @@ So this article will cover the installation, configuration and automation of sta
 
 Contents:
 
-1. [Installing MkDocs](#Installing-MkDocs)
-2. [Creating a MkDocs project and adding the Wiki content](#Creating-MkDocs-project)
-3. [Configure the MkDocs project](#Configure-MkDocs-project)
-4. [Test the static page generator](#Create-Python-script)
-5. [Create a Python build script](#Test-static-page)
-    * [Git Pull the latest changes](#Git-Pull-latest-changes)
-    * [Edit the MkDocs configuration file](#Edit-mkdocs-configuration-file)
-    * [Build MkDocs](#Build-mkdocs)
-    * [Add Index redirect](#Add-Index-redirect)
-6. [Conclusion](#Conlusion)
+[TOC]
 
 
-<a class="anchor" name="Installing-MkDocs"></a>
 ## Installing MkDocs
 
 MkDocs can be easily installed using pip (as with any other Python project, it is highly recommended to use [virtual environments][5]):
@@ -38,7 +28,6 @@ pip install mkdocs
 ```
 
 
-<a class="anchor" name="Creating-MkDocs-project"></a>
 ## Creating a MkDocs project and adding the Wiki content
 
 Navigate to the folder where the project files are to be saved and then execute in the console:
@@ -64,7 +53,6 @@ git submodule add https://github.com/<username>/<repository>.wiki.git
 (Don't forget to replace `<username>` and `<repository>` with your own information.)
 
 
-<a class="anchor" name="Configure-MkDocs-project"></a>
 ## Configure the MkDocs project
 
 Now the MkDocs configuration file `mkdocs.yml` has to be edited to point to the new content folder by setting the `docs_dir` property.
@@ -89,7 +77,6 @@ pages:
 ```
 
 
-<a class="anchor" name="Test-static-page"></a>
 ## Test the static page generator
 
 MkDocs comes with a handy built-in web server that lets you preview the generated content live.
@@ -110,7 +97,6 @@ mkdocs build
 ```
 
 
-<a class="anchor" name="Create-Python-script"></a>
 ## Create a Python build script
 
 Now that we have a static HTML version of the Wiki markdown files, we can start looking into automating with Python all the steps required to update these files.
@@ -129,7 +115,6 @@ MKDOCS_DIR = os.path.join(THIS_FILE_DIR, MKDOCS_FOLDER)
 
 For the sake of simplicity a lot of the exception handling and error management has been left out of these code snippets, but a more comprehensive source file is linked in the [Conclusion](#Conclusion).
 
-<a class="anchor" name="Git-Pull-latest-changes"></a>
 ### Git Pull the latest changes
 
 The first step to update the documentation is to pull the latest changes from the wiki repository. For this task the script will use subprocesses and assumes that Git is installed on the system:
@@ -162,7 +147,6 @@ If using a submodule within a git repository, as the Ardublockly project is, rem
 Keep in mind that this function changes the current working directory, so any other function that depends on this value (e.g. using relative directories) might be affected.
 
 
-<a class="anchor" name="Edit-mkdocs-configuration-file"></a>
 ### Edit MkDocs configuration file
 
 As previously mentioned, MkDocs requires all the markdown files to be listed in the `mkdocs.yml` file, which is why the `pages` property was left at the end of it. The following python function scans `mkdocs.yml` until the `pages:` line is encountered and it then auto-generates the list:
@@ -216,7 +200,6 @@ The main three code blocks, separated by a blank line, do the following:
 3. Removes the original `mkdocs.yml` file and replaces it by the newly created file with the updated `pages` data.
 
 
-<a class="anchor" name="Build-mkdocs"></a>
 ### Build MkDocs
 
 Similarly to the git procedure, MkDocs will be built using a subprocess. After that, the site folder is moved into a different location, this step is relevant to the current exampli and can be removed, or edited to your own preferences:
@@ -248,7 +231,6 @@ def build_mkdocs():
 ```
 
 
-<a class="anchor" name="Add-Index-redirect"></a>
 ### Add Index redirect
 
 GitHub Wiki will create by default a `Home` article for the homepage with the filename `Home.md` (article titles are automatically used for their markdown filename). Having an `index.md` file for MkDocs to automatically set as the `index.html` page would require having a wiki article titled "Index", which is not a helpul article title for users. So, in order to continue using the GitHub Wiki as intended the build procedure could create an `index.html` file to redirect to a predefined page.
@@ -290,7 +272,6 @@ def create_index():
 The HTML code has been embedded into the Python function, so that it can be reconstructed from scratch without depending on an additional file. This function will create the `index.html` file at the root of the `site` folder, and automatically redirect to whatever page has been set in `DEFAULT_INDEX`.
 
 
-<a class="anchor" name="Conclusion"></a>
 ## Conclusion
 
 And we are done! We have a simple way to build offline static documentation from a GitHub Wiki, all easily achieved using Python, Git, and MkDocs!

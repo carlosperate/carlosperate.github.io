@@ -1,5 +1,7 @@
 # Embedded Log Pelican theme
-This is a fork of pelican-bootstrap3 theme adapated for the www.embeddedlog.com website.
+This is a fork of pelican-bootstrap3 theme adapted for the [www.embeddedlog.com](http://www.embeddedlog.com) website.
+
+Please note that this fork has had major changes that are directly related to the contents and specific requirements of the [embeddedlog](http://www.embeddedlog.com) website, so it cannot be dropped into a generic pelican project without some modifications.
 
 
 ## pelican-bootstrap3

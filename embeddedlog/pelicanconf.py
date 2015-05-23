@@ -41,7 +41,6 @@ SOCIAL = (('github', 'https://github.com/carlosperate'),
 LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
 
-
 # Pages data
 PAGE_PATHS = ['pages']
 PAGE_URL = '{slug}/index.html'
@@ -76,6 +75,7 @@ TWITTER_CARDS = False
 TWITTER_USERNAME = None
 
 # Plugins
+MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'toc']
 PLUGIN_PATHS = ["plugins", "../plugins"]
 PLUGINS = ["related_posts", "pelican_youtube"]
 RELATED_POSTS_MAX = 5
