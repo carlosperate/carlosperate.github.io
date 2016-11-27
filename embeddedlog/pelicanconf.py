@@ -77,7 +77,7 @@ TWITTER_USERNAME = None
 # Plugins
 MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'toc']
 PLUGIN_PATHS = ["plugins", "../plugins"]
-PLUGINS = ["related_posts", "pelican_youtube"]
+PLUGINS = ["related_posts", "pelican_youtube", "embed_tweet"]
 RELATED_POSTS_MAX = 5
 
 # Theme options
