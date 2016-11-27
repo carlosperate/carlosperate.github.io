@@ -3,7 +3,7 @@ Date: 2015-04-20
 Category: Blog
 Tags: github, documentation, web-tech
 Slug: static-docs-from-github-wiki
-Authors: Carlos Perate
+Authors: carlosperate
 related_posts:
 summary: This article describes how to use Python and MkDocs to generate static pages for documentation written in a GitHub Wiki. This can be useful to take advantage of the GitHub Wiki features and still provide offline access to the information in a user friendly format that can be easily embedded as a help file.
 
