@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
@@ -10,6 +9,8 @@ AUTHOR = u'carlosperate'
 SITENAME = u'Embedded Log'
 GOOGLE_ANALYTICS = 'UA-58081399-1'
 TIMEZONE = 'Europe/London'
+DEFAULT_DATE_FORMAT = '%d/%m/%Y'
+LOCALE = "C"
 DEFAULT_LANG = u'en'
 CC_LICENSE = 'CC-BY'
 
@@ -22,6 +23,7 @@ else:
     RELATIVE_URLS = True
 PATH = 'content'
 STATIC_PATHS = ['images']
+DELETE_OUTPUT_DIRECTORY = True
 
 # Menu
 DISPLAY_PAGES_ON_MENU = True
@@ -46,6 +48,7 @@ PAGE_PATHS = ['pages']
 PAGE_URL = '{slug}/index.html'
 PAGE_SAVE_AS = '{slug}/index.html'
 PAGE_ORDER_BY = 'page-order'
+IGNORE_FILES = ['README.md']
 
 # Categories data
 #CATEGORY_URL = '{category}/{slug}.html'
@@ -90,15 +93,22 @@ GITHUB_SHOW_USER_LINK = True
 TWITTER_WIDGET_ID = None
 
 # Feed generation is usually not desired when developing
+FEED_DOMAIN = SITEURL
+FEED_ATOM = None
+FEED_ALL_ATOM = None
+CATEGORY_FEED_ATOM = None
+TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+TAG_FEED_ATOM = None
+TAG_FEED_RSS = None
 if DEPLOY_RUN is True:
-    FEED_ALL_ATOM = None
-    CATEGORY_FEED_ATOM = None
-    TRANSLATION_FEED_ATOM = None
-    AUTHOR_FEED_ATOM = None
-    AUTHOR_FEED_RSS = None
+    FEED_ALL_ATOM = 'feeds/all.atom.xml'
+    CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+    FEED_RSS = 'feeds/feed.rss.xml'
+    FEED_ALL_RSS = 'feeds/all.rss.xml'
+    CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 else:
-    FEED_ALL_ATOM = None
-    CATEGORY_FEED_ATOM = None
-    TRANSLATION_FEED_ATOM = None
-    AUTHOR_FEED_ATOM = None
-    AUTHOR_FEED_RSS = None
+    FEED_RSS = None
+    FEED_ALL_RSS = None
+    CATEGORY_FEED_RSS = None

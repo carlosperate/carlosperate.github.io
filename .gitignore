@@ -20,3 +20,4 @@ $RECYCLE.BIN/
 __pycache__/
 
 # Other project files
+embeddedlog/output/
