@@ -1,5 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import datetime
 
 # This variable is used for debug purposes
 DEPLOY_RUN = False
@@ -7,16 +9,17 @@ DEPLOY_RUN = False
 # Website data
 AUTHOR = u'carlosperate'
 SITENAME = u'Embedded Log'
-GOOGLE_ANALYTICS = 'UA-58081399-1'
 TIMEZONE = 'Europe/London'
 DEFAULT_DATE_FORMAT = '%d/%m/%Y'
 LOCALE = "C"
 DEFAULT_LANG = u'en'
 CC_LICENSE = 'CC-BY'
 
+BUILD_YEAR = datetime.datetime.now().year
+
 # Paths data
 if DEPLOY_RUN is True:
-    SITEURL = 'http://www.embeddedlog.com'
+    SITEURL = '//www.embeddedlog.com'
     RELATIVE_URLS = False
 else:
     SITEURL = ''
@@ -79,8 +82,8 @@ TWITTER_USERNAME = None
 
 # Plugins
 MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'toc']
-PLUGIN_PATHS = ["plugins", "../plugins"]
-PLUGINS = ["related_posts", "pelican_youtube", "embed_tweet"]
+PLUGIN_PATHS = ['plugins', '../plugins']
+PLUGINS = ['related_posts', 'pelican_youtube', 'embed_tweet']
 RELATED_POSTS_MAX = 5
 
 # Theme options
@@ -102,13 +105,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
-if DEPLOY_RUN is True:
-    FEED_ALL_ATOM = 'feeds/all.atom.xml'
-    CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
-    FEED_RSS = 'feeds/feed.rss.xml'
-    FEED_ALL_RSS = 'feeds/all.rss.xml'
-    CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
-else:
-    FEED_RSS = None
-    FEED_ALL_RSS = None
-    CATEGORY_FEED_RSS = None
+FEED_RSS = None
+FEED_ALL_RSS = None
+CATEGORY_FEED_RSS = None
+
+print("Pelican configuration loaded succesfully")
