@@ -1,7 +1,15 @@
 __This a Pelican plugin from
 https://github.com/professorsloth/pelican-embed-tweet , which is a fork of
-https://github.com/lqez/pelican-embed-tweet , modified to only add the twitter
-js files when a tweet is embedded into the page.__
+https://github.com/lqez/pelican-embed-tweet , that has been modified to only
+add the twitter javascripts files when a tweet is embedded into the page.__
+
+Further modifications done for this project:
+* Pelican not always parses the `@` sign into `&#64;`, so do an additional pass
+to parse it.
+* Add extra tests
+* Formatting
+
+Everything below this line corresponds to the original README.md file.
 
 pelican-embed-tweet
 ===================

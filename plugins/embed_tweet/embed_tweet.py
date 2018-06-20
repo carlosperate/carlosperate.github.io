@@ -21,25 +21,36 @@ And also provides a link for Twitter username.
 
 """
 
-if __name__ != '__main__':
-    from pelican import signals
+from pelican import signals
 import re
+
 
 def append_javascript(content):
     return content + '<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>'
 
+
 def replace_twitter_handle(content):
-    return re.sub(
+    first_pass = re.sub(
         r'(^|[^@\w])&#64;(\w{1,15})\b',
-        '\\1<a href="https://twitter.com/\\2">&#64;\\2</a>',
+        '\\1<a href="https://twitter.com/\\2" target="_blank">&#64;\\2</a>',
         content)
+    return re.sub(
+        r'(^|[^@\w])\@(\w{1,15})\b',
+        '\\1<a href="https://twitter.com/\\2" target="_blank">&#64;\\2</a>',
+        first_pass)
+
 
 def replace_tweet(content):
-    return re.subn(
+    first_pass, first_count = re.subn(
         r'(^|[^@\w])&#64;(\w{1,15})/status/(\d+)\b',
         '\\1<blockquote class="twitter-tweet"><a href="https://twitter.com/\\2/status/\\3">Tweet of \\2/\\3</a></blockquote>',
-        content
-    )
+        content)
+    second_pass, second_count = re.subn(
+        r'(^|[^@\w])\@(\w{1,15})/status/(\d+)\b',
+        '\\1<blockquote class="twitter-tweet"><a href="https://twitter.com/\\2/status/\\3">Tweet of \\2/\\3</a></blockquote>',
+        first_pass)
+    return second_pass, (first_count + second_count)
+
 
 def inject_twitter(content):
     content, embedding_replacements_made = replace_tweet(content)
@@ -50,21 +61,28 @@ def inject_twitter(content):
 
     return content
 
+
 def embed_tweet(content):
-    content._content = inject_twitter(content._content)
+    if content and content._content:
+        content._content = inject_twitter(content._content)
+
 
 def register():
     signals.content_object_init.connect(embed_tweet)
+
 
 class ContentMock:
     def __init__(self, preferred_content = ''):
         self._content = preferred_content
 
+
 if __name__ == '__main__':
     assert -1 != inject_twitter(ContentMock('Link check &#64;professorsloth!')._content).find('href')
+    assert -1 != inject_twitter(ContentMock('Link check @professorsloth!')._content).find('href')
     assert -1 != inject_twitter(ContentMock('Presence check &#64;professorsloth/status/639825328274309120 trailing content')._content).find('blockquote')
+    assert -1 != inject_twitter(ContentMock('Presence check @professorsloth/status/639825328274309120 trailing content')._content).find('blockquote')
     assert -1 != inject_twitter(ContentMock('JS check &#64;professorsloth/status/639825328274309120 trailing content')._content).find('script')
+    assert -1 != inject_twitter(ContentMock('JS check @professorsloth/status/639825328274309120 trailing content')._content).find('script')
     assert -1 == inject_twitter(ContentMock('No JS check &#64;professorsloth')._content).find('script')
-
-    print "All tests passed."
-
+    assert -1 == inject_twitter(ContentMock('No JS check @professorsloth')._content).find('script')
+    print("All tests passed.")
