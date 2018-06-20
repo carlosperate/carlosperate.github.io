@@ -14,7 +14,7 @@ from pelicanconf import *
 SITEURL = '//www.embeddedlog.com'
 RELATIVE_URLS = False
 
-# Feed only really needed for publishing
+# Feeds only really needed for publishing
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 FEED_RSS = 'feeds/feed.rss.xml'
@@ -24,7 +24,7 @@ CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 # Normal config has this probably already configured as True
 DELETE_OUTPUT_DIRECTORY = True
 
-# Following items are often useful when publishing
-GOOGLE_ANALYTICS = 'UA-58081399-1'
+# We don't want any cookies or user tracking
+GOOGLE_ANALYTICS = None
 
-print("Publish configuration loaded succesfully")
+print("PUBLISH configuration loaded succesfully")
