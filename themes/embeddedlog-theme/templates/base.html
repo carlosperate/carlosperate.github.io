@@ -53,6 +53,11 @@
     {# Twitter Cards tags #}
     {% include 'includes/twitter_cards.html' %}
 
+    
+    {% if PLUGIN_YOUTUBE_ADD_CSS %}
+    <!-- YouTube plugin css -->
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/youtube.css" type="text/css"/>
+    {% endif %}
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
         <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
