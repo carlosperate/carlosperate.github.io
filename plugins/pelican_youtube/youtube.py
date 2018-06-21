@@ -115,7 +115,7 @@ class YouTube(Directive):
 # The following code has been added to work with Markdown to inject the HTML
 # directly into the content when a special hook is found: [[{ ... }]]
 #
-# The implementation is very very rough and inneficient, but it will do for
+# The implementation is very very rough and inefficient, but it will do for
 # the purposes of this blog.
 ##############################################################################
 
