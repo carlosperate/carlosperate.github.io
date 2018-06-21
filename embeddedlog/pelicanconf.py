@@ -84,16 +84,27 @@ TWITTER_USERNAME = None
 MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'toc']
 PLUGIN_PATHS = ['plugins', '../plugins']
 PLUGINS = ['related_posts', 'pelican_youtube', 'embed_tweet']
+
+# Plugin: Related Posts
 RELATED_POSTS_MAX = 5
+
+# Plugin: YouTube, manually created
+PLUGIN_YOUTUBE_ADD_CSS = True
 
 # Theme options
 THEME = '../themes/embeddedlog-theme'
 BOOTSTRAP_THEME = 'flatly'
+SHOW_ARTICLE_AUTHOR = True
+SHOW_ARTICLE_CATEGORY = True
+SHOW_DATE_MODIFIED = True
 GITHUB_USER = 'carlosperate'
 GITHUB_REPO_COUNT = 5
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
 TWITTER_WIDGET_ID = None
+
+# Testing stuff
+ABOUT_ME = False
 
 # Feed generation is usually not desired when developing
 FEED_DOMAIN = SITEURL
