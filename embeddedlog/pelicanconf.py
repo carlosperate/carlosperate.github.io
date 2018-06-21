@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from distutils.version import LooseVersion
 import datetime
+from pelican import __version__ as pelican_version
+
+# Check version of Pelican
+if LooseVersion(pelican_version) < LooseVersion('3.7.0'):
+    print('Please upgrade Pelican to a version >= 3.7')
+    exit(1)
 
 # This variable is used for debug purposes
 DEPLOY_RUN = False
@@ -60,7 +67,7 @@ USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 SUMMARY_MAX_LENGTH = 50
 
-# Both pages and categories
+# Banner/Carousel in pages
 BANNER_ALL_PAGES = True
 BANNER = 'images/banner.jpg'
 BANNER_SUBTITLE = 'This is my subtitle'
@@ -70,18 +77,23 @@ DEFAULT_PAGINATION = 5
 LOAD_CONTENT_CACHE = False
 DISPLAY_BREADCRUMBS = True
 
-# Share buttons
-SHARIFF = True
-SHARIFF_LANG = 'en'
-SHARIFF_SERVICES = '[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;xing&quot;,&quot;whatsapp&quot;]'
-
 # Twitter Cards
 USE_OPEN_GRAPH = True
 TWITTER_CARDS = False
 TWITTER_USERNAME = None
 
-# Plugins
-MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'toc']
+# Markdown settings: http://pythonhosted.org/Markdown/reference.html#markdown
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {},
+    },
+    'output_format': 'html5',
+}
+
+# Plugin settings
 PLUGIN_PATHS = ['plugins', '../plugins']
 PLUGINS = ['related_posts', 'pelican_youtube', 'embed_tweet']
 
@@ -102,6 +114,11 @@ GITHUB_REPO_COUNT = 5
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
 TWITTER_WIDGET_ID = None
+
+# Share buttons (Shariff included in bootstrap theme)
+SHARIFF = True
+SHARIFF_LANG = 'en'
+SHARIFF_SERVICES = '[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;whatsapp&quot;]'
 
 # Testing stuff
 ABOUT_ME = False
