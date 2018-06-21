@@ -1,3 +1,20 @@
+This Pelican plugin has been updated to work for Markdown as well.
+Changes to the source code are documented in the code comments.
+
+The old RST format should still work fine, and now it will also add YouTube
+iframes if it finds the following in the content:
+
+```
+[[{
+    "YouTube": "8dc4siImaz8",
+    "width": 640,
+    "height": 480,
+    "allowfullscreen": True,
+    "seamless": True
+}]]
+```
+
+
 ===============
 Pelican YouTube
 ===============

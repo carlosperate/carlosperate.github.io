@@ -40,3 +40,26 @@ Link to a tweeter username: @carlosperate
 <img src="/images/theme/background_tile.png" alt="alt 2" width="49%">
 
 Some other text.
+
+## Adding YouTube videos
+
+Here is a responsive embedded YouTube video, only first key mandatory, the
+others are shown with their default value:
+
+[[{
+    "YouTube": "8dc4siImaz8",
+    "allowfullscreen": True,
+    "seamless": True
+}]]
+
+Here is a embedded YouTube video with a fix width and height:
+
+[[{
+    "YouTube": "8dc4siImaz8",
+    "width": 640,
+    "height": 480
+}]]
+
+Minimal:
+
+[[{"YouTube": "8dc4siImaz8"}]]
