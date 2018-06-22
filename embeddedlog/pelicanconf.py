@@ -18,10 +18,8 @@ AUTHOR = u'carlosperate'
 SITENAME = u'Embedded Log'
 TIMEZONE = 'Europe/London'
 DEFAULT_DATE_FORMAT = '%d/%m/%Y'
-LOCALE = "C"
+LOCALE = 'C'
 DEFAULT_LANG = u'en'
-CC_LICENSE = 'CC-BY'
-
 BUILD_YEAR = datetime.datetime.now().year
 
 # Paths data
@@ -34,6 +32,7 @@ else:
 PATH = 'content'
 STATIC_PATHS = ['images']
 DELETE_OUTPUT_DIRECTORY = True
+OUTPUT_RETENTION = ['.git']
 
 # Menu
 DISPLAY_PAGES_ON_MENU = True
@@ -46,7 +45,6 @@ DISPLAY_CATEGORIES_ON_SIDEBAR = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 DISPLAY_TAGS_ON_SIDEBAR = True
 TAG_CLOUD_MAX_ITEMS = 10
-#MENUITEMS=(('', '#'))
 SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('twitter', 'https://twitter.com/carlosperate'),
           ('google+', 'https://plus.google.com/109111328639820363664'),)
@@ -77,11 +75,6 @@ DEFAULT_PAGINATION = 5
 LOAD_CONTENT_CACHE = False
 DISPLAY_BREADCRUMBS = True
 
-# Twitter Cards
-USE_OPEN_GRAPH = True
-TWITTER_CARDS = False
-TWITTER_USERNAME = None
-
 # Markdown settings: http://pythonhosted.org/Markdown/reference.html#markdown
 MARKDOWN = {
     'extension_configs': {
@@ -96,6 +89,9 @@ MARKDOWN = {
 # Plugin settings
 PLUGIN_PATHS = ['plugins', '../plugins']
 PLUGINS = ['related_posts', 'pelican_youtube', 'embed_tweet']
+# Still need to pip install typogrify
+TYPOGRIFY = False
+
 
 # Plugin: Related Posts
 RELATED_POSTS_MAX = 5
@@ -109,11 +105,23 @@ BOOTSTRAP_THEME = 'flatly'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_ARTICLE_CATEGORY = True
 SHOW_DATE_MODIFIED = True
+
+# CC license offered by the bootstrap theme
+CC_LICENSE = 'CC-BY'
+
+# GitHub active repositories (included in bootstrap theme)
 GITHUB_USER = 'carlosperate'
 GITHUB_REPO_COUNT = 5
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
+
+# Twitter timeline (included in bootstrap theme) (deprecated)
 TWITTER_WIDGET_ID = None
+
+# Facebook/Twitter Cards (included in bootstrap theme)
+USE_OPEN_GRAPH = True
+TWITTER_CARDS = True
+TWITTER_USERNAME = 'carlosperate'
 
 # Share buttons (Shariff included in bootstrap theme)
 SHARIFF = True
@@ -121,7 +129,7 @@ SHARIFF_LANG = 'en'
 SHARIFF_SERVICES = '[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;whatsapp&quot;]'
 
 # Testing stuff
-ABOUT_ME = False
+ABOUT_ME = True
 
 # Feed generation is usually not desired when developing
 FEED_DOMAIN = SITEURL
@@ -137,4 +145,4 @@ FEED_RSS = None
 FEED_ALL_RSS = None
 CATEGORY_FEED_RSS = None
 
-print("Pelican configuration loaded succesfully")
+print('Pelican configuration loaded successfully')

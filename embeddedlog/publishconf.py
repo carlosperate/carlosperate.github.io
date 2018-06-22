@@ -6,11 +6,14 @@ from __future__ import unicode_literals
 # explicitly specify it as your config file.
 import os
 import sys
+
+# Importing all the configuration from pelicanconf.py
 this_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(this_dir)
-print("Import configuration file from: %s" % this_dir)
+print('Import configuration file from: {}'.format(this_dir))
 from pelicanconf import *
 
+# Rewriting settings from pelicanconf.py
 SITEURL = '//www.embeddedlog.com'
 RELATIVE_URLS = False
 
@@ -21,10 +24,10 @@ FEED_RSS = 'feeds/feed.rss.xml'
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 
-# Normal config has this probably already configured as True
+# Ensure a clean build
 DELETE_OUTPUT_DIRECTORY = True
 
 # We don't want any cookies or user tracking
 GOOGLE_ANALYTICS = None
 
-print("PUBLISH configuration loaded succesfully")
+print('PUBLISH configuration loaded successfully')
