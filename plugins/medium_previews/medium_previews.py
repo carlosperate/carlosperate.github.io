@@ -14,6 +14,8 @@ MEDIUM_URL = 'https://www.medium.com/@{}/latest'.format(MEDIUM_USERNAME)
 MEDIUM_JSON_URL = 'https://medium.com/@{}/latest?format=json'.format(MEDIUM_USERNAME)
 JSON_ESCAPE_STR = '])}while(1);</x>'
 
+LOADED_DATA = None
+
 
 def provide_fake_data():
     return [
@@ -71,13 +73,16 @@ def parsed_medium_data():
 
 
 def provide_template_data(generator):
-    print('Providing Medium to template!!')
-    generator.env.globals['MEDIUM_PREVIEW_DATA'] = parsed_medium_data()
+    global LOADED_DATA
+    if not LOADED_DATA:
+        print('Retrieving and parsing Medium data...')
+        LOADED_DATA = parsed_medium_data()
+    print('Providing Medium data to template...')
+    generator.env.globals['MEDIUM_PREVIEW_DATA'] = LOADED_DATA
 
 
 def register():
     signals.generator_init.connect(provide_template_data)
-    #pass
 
 
 def run_tests():
