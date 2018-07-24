@@ -22,6 +22,9 @@ LOCALE = 'C'
 DEFAULT_LANG = u'en'
 BUILD_YEAR = datetime.datetime.now().year
 
+# Medium URL used in different parts of website/theme
+MEDIUM_URL = 'https://medium.com/@carlosperate'
+
 # Paths data
 if LOCALHOST_ABSOLUTE is True:
     SITEURL = 'http://localhost:8080'
@@ -37,7 +40,7 @@ OUTPUT_RETENTION = ['.git']
 # Menu
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = False
-MENUITEMS = (('Blog', SITEURL + '/category/blog.html'),
+MENUITEMS = (('Blog', SITEURL + '/blog/'),
              ('About', SITEURL + '/about/index.html'),)
 
 # Sidebar
@@ -47,7 +50,7 @@ DISPLAY_TAGS_ON_SIDEBAR = True
 TAG_CLOUD_MAX_ITEMS = 10
 SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('twitter', 'https://twitter.com/carlosperate'),
-          ('google+', 'https://plus.google.com/109111328639820363664'),)
+          ('medium', MEDIUM_URL),)
 LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
 

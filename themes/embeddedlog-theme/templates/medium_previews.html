@@ -1,85 +1,8 @@
-{% extends "base.html" %}
-{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
-{% block html_lang %}{{ page.lang }}{% endblock %}
-{% block meta %}
-    {% if page.author %}
-        <meta name="author" content="{{ page.author }}" />
-    {% else %}
-        <meta name="author" content="{{ AUTHOR }}" />
-    {% endif %}
-    {% if page.summary %}
-        <meta name="description" content="{{ page.summary|striptags|escape }}" />
-    {% endif %}
-{% endblock %}
-{% block opengraph %}
-    {% if OPEN_GRAPH_FB_APP_ID %}
-        <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
-    {% endif %}
-    <meta property="og:site_name" content="{{ SITENAME }}" />
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="{{ page.title|striptags|escape }}"/>
-    <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
-    <meta property="og:description" content="{{ page.summary|striptags|escape }}" />
-    {% if page.og_image %}
-        <meta property="og:image"
-              content="{{ SITEURL }}/{{ page.og_image }}"/>
-    {% elif OPEN_GRAPH_IMAGE %}
-        <meta property="og:image"
-              content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
-    {% endif %}
-{% endblock %}
-
-{% block canonical_rel %}
-<link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
-{% endblock %}
-
-{% block breadcrumbs %}
-    {% if DISPLAY_BREADCRUMBS %}
-    <ol class="breadcrumb">
-        <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-      {% if page.url %}
-        <li class="active">{{ page.title }}</li>
-      {% endif %}
-    </ol>
-    {% endif %}
-{% endblock %}
+{% extends "page.html" %}
 
 {% block content %}
 
     {# Here we are injecting all the Medium article previews #}
-    {% if MEDIUM_PREVIEW_DATA %}
-        {% for post in MEDIUM_PREVIEW_DATA %}
-            <article>
-                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                {% if post.thumbnailUrl %}
-                    <div class="well well-sm">
-                        <img src="{{ post.thumbnailUrl }}" alt="post thumbnail" width="100%">
-                    </div>
-                {% endif %}
-                <div class="summary">{{ post.summary }}
-                    <a class="btn btn-default btn-xs" href="{{ post.url }}" target="_blank">more ...</a>
-                </div>
-            </article>
-            <hr/>
-        {% endfor %}
-    {% endif %}
+    {% include 'includes/medium_preview_list.html' %}
 
-{% endblock %}
-
-{% block scripts %}
-    {% if page.carousel %}
-    <!-- Banner carousel control -->
-    <script type="text/javascript">
-        /** Stops the carousel and sets it to a specific project */
-        window.addEventListener("load", function() {
-            $(".carousel").carousel({{ page.carousel }});
-            $(".carousel").carousel('pause');
-            $("#carousel-control-prev").css("visibility", "hidden");
-            $("#carousel-control-next").css("visibility", "hidden");
-            $("#carousel-indicators").css("display", "none");
-            $(".carousel-indicators-placeholder").css("display", "none");
-        });
-    </script>
-    <!-- End Banner carousel control -->
-    {% endif %}
-{% endblock %}
+{% endblock content %}
