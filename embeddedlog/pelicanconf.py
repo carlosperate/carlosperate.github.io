@@ -93,7 +93,8 @@ PLUGIN_PATHS = ['plugins', '../plugins']
 PLUGINS = [
     'related_posts',
     'pelican_youtube',
-    'embed_tweet'
+    'embed_tweet',
+    'medium_previews'
 ]
 # Still need to pip install typogrify
 TYPOGRIFY = False

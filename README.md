@@ -7,6 +7,9 @@ General documentation from the [Pelican website][1].
 ```
 pip install pelican
 pip install markdown
+pip install requests
+pip install feedparser
+pip install scrapy
 ```
 
 ```
