@@ -491,13 +491,14 @@ ul.nav .dropdown-menu li a:hover {
 /* Additions to containers due to new background image */
 /*******************************************************/
 .container_body {
-    border-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
     background: #FFFFFF !important;
     padding: 32px 32px;
+    /*box-shadow: 0px 0px 24px 1px rgba(130,130,130,0.72);*/
 }
 
 .container_footer {
-    border-radius: 3px;
+    border-radius: 3px 3px 0px 0px;
     background: #FFFFFF !important;
     padding: 16px 32px 0px 32px;
     line-height: 1 !important;
