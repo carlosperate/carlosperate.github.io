@@ -218,6 +218,11 @@ ul.nav .dropdown-menu li a:hover {
     color: #FFFFFF;
 }
 
+/* Active list drop down menu */
+ul.nav .dropdown-menu li.active a {
+    color: #FFFFFF;
+}
+
 
 /****************/
 /* Banner Style */
