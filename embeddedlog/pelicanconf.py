@@ -11,7 +11,7 @@ if LooseVersion(pelican_version) < LooseVersion('3.7.0'):
     exit(1)
 
 # This variable is used for debug purposes
-DEPLOY_RUN = False
+LOCALHOST_ABSOLUTE = True
 
 # Website data
 AUTHOR = u'carlosperate'
@@ -23,8 +23,8 @@ DEFAULT_LANG = u'en'
 BUILD_YEAR = datetime.datetime.now().year
 
 # Paths data
-if DEPLOY_RUN is True:
-    SITEURL = '//www.embeddedlog.com'
+if LOCALHOST_ABSOLUTE is True:
+    SITEURL = 'http://localhost:8080'
     RELATIVE_URLS = False
 else:
     SITEURL = ''
@@ -72,8 +72,10 @@ BANNER_SUBTITLE = 'This is my subtitle'
 
 # General navigation
 DEFAULT_PAGINATION = 5
-LOAD_CONTENT_CACHE = False
 DISPLAY_BREADCRUMBS = True
+
+# Internal Pelican cache speeds up build time
+LOAD_CONTENT_CACHE = False
 
 # Markdown settings: http://pythonhosted.org/Markdown/reference.html#markdown
 MARKDOWN = {
@@ -88,19 +90,23 @@ MARKDOWN = {
 
 # Plugin settings
 PLUGIN_PATHS = ['plugins', '../plugins']
-PLUGINS = ['related_posts', 'pelican_youtube', 'embed_tweet']
+PLUGINS = [
+    'related_posts',
+    'pelican_youtube',
+    'embed_tweet'
+]
 # Still need to pip install typogrify
 TYPOGRIFY = False
-
 
 # Plugin: Related Posts
 RELATED_POSTS_MAX = 5
 
-# Plugin: YouTube, manually created
+# Plugin: YouTube, manually created variable
 PLUGIN_YOUTUBE_ADD_CSS = True
 
 # Theme options
 THEME = '../themes/embeddedlog-theme'
+THEME_STATIC_DIR = 'theme'
 BOOTSTRAP_THEME = 'flatly'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_ARTICLE_CATEGORY = True
