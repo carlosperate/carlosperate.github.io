@@ -44,6 +44,7 @@ MENUITEMS = (('Blog', SITEURL + '/blog/'),
              ('About', SITEURL + '/about/index.html'),)
 
 # Sidebar
+HIDE_SIDEBAR = True
 DISPLAY_CATEGORIES_ON_SIDEBAR = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 DISPLAY_TAGS_ON_SIDEBAR = True
@@ -53,6 +54,9 @@ SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('medium', MEDIUM_URL),)
 LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
+
+# Profile picture
+AVATAR = SITEURL + '/images/theme/profile_large.jpg'
 
 # Pages data
 PAGE_PATHS = ['pages']

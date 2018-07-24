@@ -80,13 +80,6 @@ hr {
     font-size: 6pt;
 }
 
-#aboutme {
-    padding-top: 0px;
-    padding-bottom: 5px;
-    -ms-word-break: normal;
-    word-break: normal;
-}
-
 a, a:hover {
     color: inherit;
 }
@@ -314,14 +307,19 @@ ul.nav .dropdown-menu li.active a {
 }
 
 .carousel-indicators {
-    bottom: 0px;
+    bottom: 50px;
+}
+@media (max-width: 767px) {
+    .carousel-indicators {
+        bottom: 24px;
+    }
 }
 
 .carousel-content {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     padding: 0px 0px;
     position: relative;
-    height: 100%;
+    height: calc(100% - 48px);
     z-index: 1;
     color: #fff;
     text-shadow: 0 0 1px #000000, 0 0 2px #000000;
@@ -490,6 +488,97 @@ ul.nav .dropdown-menu li.active a {
     border: none;
     padding: 6px 12px;
 }
+
+/***************/
+/* About Me box*/
+/***************/
+#aboutme {
+    padding-top: 0px;
+    padding-bottom: 5px;
+    -ms-word-break: normal;
+    word-break: normal;
+}
+
+#aboutme-container {
+    border: 2px #fff solid;
+    border-radius: 12px;
+    margin: -90px 20px 0px 20px;
+    padding: 0;
+    overflow: auto;
+    margin-bottom: 36px;
+}
+@media (max-width: 767px) {
+    #aboutme-container {
+        margin: -60px 0px 0px 0px;
+        margin-bottom: 12px;
+    }
+}
+
+#aboutme #avatar {
+    width: 114px;
+    height: 114px;
+    margin: 0px 16px 0px 0px;
+    border-radius: 12px 0px 0px 12px;
+    float: left;
+}
+@media (max-width: 767px) {
+    #aboutme #avatar {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+#aboutme-main-box {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#aboutme-social-box {
+    margin-left: 0px;
+    padding-left: 0px;
+    display: block;
+}
+@media (max-width: 767px) {
+    #aboutme-social-box {
+        display: none;
+    }
+}
+
+#aboutme-social-box-alt {
+    margin: 0px;
+    display: none;
+    margin-bottom: 24px;
+}
+@media (max-width: 767px) {
+    #aboutme-social-box-alt {
+        display: block;
+    }
+}
+
+#aboutme .list-group, #aboutme .list-group-item {
+    background-color: transparent;
+}
+@media (max-width: 767px) {
+    #aboutme .list-group, #aboutme .list-group-item {
+        padding: 6px 2px;
+    }
+}
+
+#aboutme-small-disapear {
+    display: inline;
+}
+#aboutme-small-capitalise {
+    text-transform: lowercase;
+}
+@media (max-width: 767px) {
+    #aboutme-small-disapear {
+        display: none;
+    }
+    #aboutme-small-capitalise {
+        text-transform: capitalize;
+    }
+}
+
 
 
 /*******************************************************/

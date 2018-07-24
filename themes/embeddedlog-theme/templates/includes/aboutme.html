@@ -1,11 +1,42 @@
 <div id="aboutme">
-    {% if AVATAR %}
-        <p>
-            <img width="100%" class="img-thumbnail" src="{{ AVATAR }}"/>
-        </p>
-    {% endif %}
-    <p>
-        <strong>About {{ AUTHOR }}</strong><br/>
-        {{ ABOUT_ME }}
-    </p>
+    <section class="well well-sm" id="aboutme-container">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10" id="aboutme-main-box">
+            {% if AVATAR %}
+                <img src="{{ AVATAR }}" id="avatar">
+            {% endif %}
+            <div style="padding: 10px;">
+                Hi, I'm Carlos, welcome <span id="aboutme-small-disapear">to Embedded Log</span>!<br>
+                ⬆ <span id="aboutme-small-disapear">You can check out my</span> <span id="aboutme-small-capitalise">projects</span> above<br>
+                ⬇ <span id="aboutme-small-disapear">Or my</span> <span id="aboutme-small-capitalise">blog</span> posts below<br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2" id="aboutme-social-box">
+            {% if SOCIAL %}
+                <li class="list-group-item">
+                  <ul class="list-group" id="social">
+                    {% for name, link in SOCIAL %}
+                        {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+                        {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo', 'twitter'] %}
+                            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+                        {% else %}
+                            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+                        {% endif %}
+                        <li class="list-group-item"><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i> {{ name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+            {% endif %}
+        </div>
+    </section>
+    <ol class="breadcrumb" id="aboutme-social-box-alt">
+        {% for name, link in SOCIAL %}
+            {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+            {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo', 'twitter'] %}
+                {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+            {% else %}
+                {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+            {% endif %}
+            <li class="list-group-item"><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i> {{ name }}</a></li>
+        {% endfor %}
+    </ol>
 </div>
