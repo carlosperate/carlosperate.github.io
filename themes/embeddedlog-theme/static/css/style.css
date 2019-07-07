@@ -611,3 +611,10 @@ ul.nav .dropdown-menu li.active a {
         padding-right: 16px !important;
     }
 }
+
+/**********************/
+/* Overwriting Sharif */
+/**********************/
+.shariff-button {
+    border-radius: 6px;
+}
