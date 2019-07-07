@@ -20,10 +20,10 @@
                   <ul class="list-group" id="social">
                     {% for name, link in SOCIAL %}
                         {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-                        {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo', 'twitter'] %}
-                            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+                        {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo'] %}
+                            {% set iconattributes = '"fab fa-' ~ name_sanitized ~ ' fa-lg"' %}
                         {% else %}
-                            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+                            {% set iconattributes = '"fab fa-' ~ name_sanitized ~ '-square fa-lg"' %}
                         {% endif %}
                         <li class="list-group-item"><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i> {{ name }}</a></li>
                     {% endfor %}
@@ -35,10 +35,10 @@
     <ol class="breadcrumb" id="aboutme-social-box-alt">
         {% for name, link in SOCIAL %}
             {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-            {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo', 'twitter'] %}
-                {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+            {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'medium', 'weibo'] %}
+                {% set iconattributes = '"fab fa-' ~ name_sanitized ~ ' fa-lg"' %}
             {% else %}
-                {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+                {% set iconattributes = '"fab fa-' ~ name_sanitized ~ '-square fa-lg"' %}
             {% endif %}
             <li class="list-group-item"><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i> {{ name }}</a></li>
         {% endfor %}

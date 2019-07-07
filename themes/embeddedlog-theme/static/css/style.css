@@ -343,7 +343,8 @@ ul.nav .dropdown-menu li.active a {
     font-size: 1.0rem;
     line-height: 1.4;
 }
-.carousel-content .fa {
+.carousel-content .fa,
+.carousel-content .fab {
     padding-right:12px;
     font-size: 1.4rem;
 }
@@ -383,7 +384,8 @@ ul.nav .dropdown-menu li.active a {
         font-size: 0.9rem;
         line-height: 1.2;
     }
-    .carousel-content .fa {
+    .carousel-content .fa,
+    .carousel-content .fab {
         padding-right: 6px;
         font-size: 1.2rem;
     }

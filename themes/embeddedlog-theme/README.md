@@ -1,8 +1,16 @@
 # Embedded Log Pelican theme
-This is a fork of pelican-bootstrap3 theme adapted for the [www.embeddedlog.com](http://www.embeddedlog.com) website.
 
-Please note that this fork has had major changes that are directly related to the contents and specific requirements of the [embeddedlog](http://www.embeddedlog.com) website, so it cannot be dropped into a generic pelican project without some modifications.
+This is a fork of pelican-bootstrap3 theme adapted for the
+[www.embeddedlog.com](http://www.embeddedlog.com) website.
 
+Please note that this fork has had major changes that are directly related to
+the contents and specific requirements of the
+[embeddedlog](http://www.embeddedlog.com) website, so it cannot be dropped
+into a generic pelican project without some modifications.
+
+Font Awesome been updated from version v4.x to v5.9.
+
+-----
 
 ## pelican-bootstrap3
 
