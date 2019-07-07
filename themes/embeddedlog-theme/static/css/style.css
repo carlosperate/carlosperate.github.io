@@ -44,8 +44,7 @@ h4, h5 {
 }
 
 hr {
-    padding-top: 64px;
-    margin-top: -48px; /* 16px original -64px anchor */
+    margin-top: 16px;
     margin-bottom: 16px;
     border: 0;
     border-top: 1px solid #ECF0F1;
