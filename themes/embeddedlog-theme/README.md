@@ -8,7 +8,8 @@ the contents and specific requirements of the
 [embeddedlog](http://www.embeddedlog.com) website, so it cannot be dropped
 into a generic pelican project without some modifications.
 
-Font Awesome been updated from version v4.x to v5.9.
+- Font Awesome been updated from version v4.x to v5.9.
+- Shariff has been updated from version v1.7.3 to v3.2.1.
 
 -----
 

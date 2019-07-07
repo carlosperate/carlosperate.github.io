@@ -27,7 +27,7 @@ MEDIUM_URL = 'https://medium.com/@carlosperate'
 
 # Paths data
 if LOCALHOST_ABSOLUTE is True:
-    SITEURL = 'http://localhost:8080'
+    SITEURL = '//localhost:8080'
     RELATIVE_URLS = False
 else:
     SITEURL = ''
@@ -140,7 +140,10 @@ TWITTER_USERNAME = 'carlosperate'
 # Share buttons (Shariff included in bootstrap theme)
 SHARIFF = True
 SHARIFF_LANG = 'en'
-SHARIFF_SERVICES = '[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;whatsapp&quot;]'
+SHARIFF_ORIENTATION = 'horizontal'  # horizontal, vertical
+SHARIFF_BUTTON_STYLE = 'standard'   # standard, icon, icon-count
+SHARIFF_TWITTER_VIA = 'carlosperate'
+SHARIFF_SERVICES = '[&quot;twitter&quot;, &quot;facebook&quot;, &quot;linkedin&quot;, &quot;reddit&quot;, &quot;pocket&quot;, &quot;whatsapp&quot;]'
 
 # Testing stuff
 ABOUT_ME = True

@@ -5,6 +5,9 @@
         {% if SHARIFF_BACKEND_URL %}
         data-backend-url="{{ SHARIFF_BACKEND_URL }}"
         {% endif %}
+        {% if SHARIFF_BUTTON_STYLE %}
+        data-button-style="{{ SHARIFF_BUTTON_STYLE }}"
+        {% endif %}
         {% if SHARIFF_LANG %}
         data-lang="{{ SHARIFF_LANG }}"
         {% endif %}
@@ -20,6 +23,6 @@
         {% if SHARIFF_TWITTER_VIA|default(false) %}
         data-twitter-via="{{ TWITTER_USERNAME }}"
         {% endif %}
-        data-url="{{ SITEURL }}/{{ article.url }}"></div>
+        data-url="https:{{ SITEURL }}/{{ article.url }}"></div>
     <!-- Shariff Button END -->
 {% endif %}
