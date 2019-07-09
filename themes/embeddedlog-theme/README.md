@@ -271,17 +271,6 @@ As an alternative, you may use [Shariff](https://github.com/heiseonline/shariff)
 
 For a detailed description of each setting, refer to [data attributes](https://github.com/heiseonline/shariff#options-data-attributes) description at the [Shariff README](https://github.com/heiseonline/shariff).
 
-#### Tipue Search
-
-This theme has support for the
-[Tipue Search plugin](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search).
-
-All you have to do, is:
-- enable the plugin, and the theme will add a search box on the right
-  side of the menu
-- Add `DIRECT_TEMPLATES = (('search',))` in your `pelicanconf.py`.
-
-
 #### Footer
 
 The footer will display a copyright message using the AUTHOR variable and the year of the latest post. If a content license mark is enabled (see above), that will be shown as well.
