@@ -10,6 +10,3 @@
 [submodule "themes/pelican-octopress-theme"]
 	path = themes/pelican-octopress-theme
 	url = https://github.com/duilio/pelican-octopress-theme.git
-[submodule "themes/foundation-default-colours"]
-	path = themes/foundation-default-colours
-	url = https://github.com/FuzzyWuzzie/foundation-default-colours.git
