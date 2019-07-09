@@ -37,6 +37,7 @@
                          attr_props={}) %}
   {% if cc_name %}
     {% set cc_name = cc_name|lower|replace("cc-","") %}
+    {% set cc_title_suffix = cc_name|replace("by", "")|replace("-nc","-NonCommercial")|replace("-nd","-NoDerivatives")|replace("-sa","-ShareAlike") %}
   {% else %}
     {% set cc_name = "by" %}
     {% set cc_title_suffix = "" %}
@@ -52,10 +53,10 @@
       {% set cc_title_suffix = cc_title_suffix ~ "-ShareAlike" %}
     {% endif %}
   {% endif %}
-  {% set cc_title, cc_uri, cc_icon = ("Creative Commons Attribution 4.0 InternationalCCSUFFIX License","http://creativecommons.org/licenses/CCNAME/4.0/","//i.creativecommons.org/l/CCNAME/4.0/80x15.png") %}
+  {% set cc_title, cc_uri, cc_icon = ("Creative Commons AttributionCCSUFFIX 4.0 InternationalCCSUFFIX License","https://creativecommons.org/licenses/CCNAME/4.0/","//i.creativecommons.org/l/CCNAME/4.0/80x15.png") %}
   {% if br_after_img %}<br/>{% endif %}
   {% if attr_markup %}
-    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">{{ attr_props['title'] }}</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ attr_props['url'] }}" property="cc:attributionName" rel="cc:attributionURL">{{ attr_props['name'] }}</a> is
+    &quot;<span xmlns:dct="https://purl.org/dc/terms/" property="dct:title">{{ attr_props['title'] }}</span>&quot; by <a xmlns:cc="https://creativecommons.org/ns#" href="{{ attr_props['url'] }}" property="cc:attributionName" rel="cc:attributionURL">{{ attr_props['name'] }}</a> is
   {% else %}
     Content
   {% endif %}
