@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pelican = ">=3.7.0"
+markdown = "*"
+requests = "*"
+feedparser = "*"
+scrapy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3"

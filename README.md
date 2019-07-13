@@ -2,7 +2,14 @@
 
 ## Installation instructions
 
-General documentation from the [Pelican website][1].
+This repository has submodules, so make sure they are initialised after clone:
+
+```
+git clone --recursive https://github.com/carlosperate/carlosperate.github.io.git 
+```
+
+General documentation also found in the
+[Pelican website](http://docs.getpelican.com/en/stable/install.html).
 
 ```
 pip install pelican
@@ -12,15 +19,16 @@ pip install feedparser
 pip install scrapy
 ```
 
-```
-git clone --recursive https://github.com/carlosperate/carlosperate.github.io.git 
-```
+Or if you have pipenv:
 
+```
+pipenv install .
+```
 
 ## Repository structure
 
-* **embeddedlog**: Pelican project directory.
-* **plugins**: Pelican plugins used (downloaded or created for purpose).
+* **embeddedlog**: Pelican content directory.
+* **plugins**: Pelican plugins used (downloaded or created this website).
 * **themes**: Tested themes, and the theme created for the website.
 
 
@@ -32,34 +40,9 @@ From the root directory of this repository:
 pelican -s pelicanconf.py
 ```
 
-For test general deployment options without using the full deployment script,
-change the following line from `embeddedlog/pelicanconf.py`:
-
-```
-DEPLOY_RUN = False -> DEPLOY_RUN = True
-```
-
-For the final publishing the `pelicanconfpublish.py` script imports the
+For the final publishing output the `pelicanconfpublish.py` script imports the
 `pelicanconf.py` and updates or adds values:
 
 ```
 pelican -s pelicanconfpublish.py
 ```
-
-
-## Test output in C9
-
-If you are reading this document it might not be clear what the content on
-this section is refering to, this is just a reminder for myself on how to set a
-server to preview the ouput within my development environment.
-
-```
-cd ~/workspace/pelican-project/embeddedlog/output
-sudo python -m SimpleHTTPServer 8080
-```
-
-http://pelican-website-carlosperate.c9users.io:8080
-
-
-
-[1]: http://docs.getpelican.com/en/stable/install.html
