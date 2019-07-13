@@ -120,7 +120,6 @@ PLUGIN_YOUTUBE_ADD_CSS = True
 # Theme options
 THEME = os.path.join(PROJECT_ROOT, 'themes', 'embeddedlog-theme')
 THEME_STATIC_DIR = 'theme'
-BOOTSTRAP_THEME = 'flatly'
 SHOW_ARTICLE_AUTHOR = True
 SHOW_ARTICLE_CATEGORY = True
 SHOW_DATE_MODIFIED = True

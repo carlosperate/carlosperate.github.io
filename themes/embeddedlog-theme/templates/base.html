@@ -53,30 +53,17 @@
     {# Twitter Cards tags #}
     {% include 'includes/twitter_cards.html' %}
 
-    
     {% if PLUGIN_YOUTUBE_ADD_CSS %}
     <!-- YouTube plugin css -->
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/youtube.css" type="text/css"/>
     {% endif %}
     <!-- Bootstrap -->
-    {% if BOOTSTRAP_THEME %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
-    {% else %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" type="text/css"/>
-    {% endif %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
-    {% if DOCUTIL_CSS %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/html4css1.css" rel="stylesheet">
-    {% endif %}
-    {% if TYPOGRIFY %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet">
-    {% endif %}
+
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" type="text/css"/>
-    {% if CUSTOM_CSS %}
-        <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
-    {% endif %}
     {% if SHARIFF %}
         <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/shariff/shariff.min.css" rel="stylesheet">
     {% endif %}

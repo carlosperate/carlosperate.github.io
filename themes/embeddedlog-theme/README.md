@@ -67,26 +67,6 @@ Part of the versatility of this theme comes from the fact that I included all th
 
 Set `SHOW_ARTICLE_AUTHOR` to True to show the author of the article at the top of the article and in the index of articles. Set `SHOW_ARTICLE_CATEGORY` to show the Category of each article. Set `SHOW_DATE_MODIFIED` to True to show the article modified date next to the published date.
 
-#### Custom CSS
-
-If you want to add custom css to the theme, without having to clone and maintain your own version of the theme, you can use the `CUSTOM_CSS` variable. The value is the location where you tell Pelican to put the file (see below):
-
-```
-CUSTOM_CSS = 'static/custom.css'
-```
-
-To tell Pelican to copy the relevant file to the desired destination, add the path to `STATIC_PATHS` and the destination to `EXTRA_PATH_METADATA`, like so:
-
-```
-# Tell Pelican to add 'extra/custom.css' to the output dir
-STATIC_PATHS = ['images', 'extra/custom.css']
-
-# Tell Pelican to change the path to 'static/custom.css' in the output dir
-EXTRA_PATH_METADATA = {
-    'extra/custom.css': {'path': 'static/custom.css'}
-}
-```
-
 #### Pygments
 
 You can choose the syntax highlighting style by using the `PYGMENTS_STYLE` variable to specify one of the built-in Pygments styles. By default the `native` style is used. The following styles are avaiable:
@@ -206,10 +186,6 @@ SOCIAL = (('twitter', 'http://twitter.com/DaanDebie'),
 	* Use `RECENT_POST_COUNT` to control the amount of recent posts. Defaults to **5**
 
 To remove the sidebar entirely, set `HIDE_SIDEBAR` to _True_.
-
-#### reStructuredText styles
-
-If you're using reStructuredText for writing articles and pages, you can include the extra CSS styles that are used by the `docutils`-generated HTML by setting `DOCUTIL_CSS` to True. This can be done as a global setting or  setting it in the metadata of a specific article or page.
 
 #### Disqus comments
 
