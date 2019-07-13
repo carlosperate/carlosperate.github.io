@@ -565,17 +565,17 @@ ul.nav .dropdown-menu li.active a {
     }
 }
 
-#aboutme-small-disapear {
+.aboutme-small-disapear {
     display: inline;
 }
-#aboutme-small-capitalise {
+.aboutme-small-capitalise {
     text-transform: lowercase;
 }
 @media (max-width: 767px) {
-    #aboutme-small-disapear {
+    .aboutme-small-disapear {
         display: none;
     }
-    #aboutme-small-capitalise {
+    .aboutme-small-capitalise {
         text-transform: capitalize;
     }
 }
