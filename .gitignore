@@ -1,23 +1,73 @@
-# OS
-*~
+###########
+# Project #
+###########
+# Pelican build folders
+output/
+cache/
+
+######################
+# OS generated files #
+######################
+# macoOS
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
 ._*
-*.lock
-*.DS_Store
-*.DS_Store?
-*.swp
-*.out
 .Spotlight-V100
 .Trashes
 Icon?
-ehthumbs.db
+
+# Windows
 Thumbs.db
-Desktop.ini
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
 $RECYCLE.BIN/
+*.lnk
 
-# Python
-*.pid
-*.py[cod]
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+##########
+# Python #
+##########
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
 
-# Other project files
-output/
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Sphinx documentation
+docs/_build/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
