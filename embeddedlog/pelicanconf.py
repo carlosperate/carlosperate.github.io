@@ -3,6 +3,8 @@
 from __future__ import unicode_literals
 from distutils.version import LooseVersion
 import datetime
+import os
+
 from pelican import __version__ as pelican_version
 
 # Check version of Pelican
@@ -32,10 +34,14 @@ if LOCALHOST_ABSOLUTE is True:
 else:
     SITEURL = ''
     RELATIVE_URLS = True
-PATH = 'content'
-STATIC_PATHS = ['images']
+PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content')
+STATIC_PATHS = ['images']    # Relative to PATH
+OUTPUT_RETENTION = []
+OUTPUT_PATH = 'output/'
+
+# Internal Pelican cache speeds up build time
+LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
-OUTPUT_RETENTION = ['.git']
 
 # Menu
 DISPLAY_PAGES_ON_MENU = True
@@ -56,7 +62,7 @@ LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
 
 # Profile picture
-AVATAR = SITEURL + '/images/theme/profile_large.jpg'
+AVATAR = '{}/images/theme/profile_large.jpg'.format(SITEURL)
 
 # Pages data
 PAGE_PATHS = ['pages']
@@ -80,9 +86,6 @@ BANNER_SUBTITLE = 'This is my subtitle'
 # General navigation
 DEFAULT_PAGINATION = 5
 DISPLAY_BREADCRUMBS = True
-
-# Internal Pelican cache speeds up build time
-LOAD_CONTENT_CACHE = False
 
 # Markdown settings: http://pythonhosted.org/Markdown/reference.html#markdown
 MARKDOWN = {
@@ -126,8 +129,8 @@ CC_LICENSE = 'CC-BY'
 # GitHub active repositories (included in bootstrap theme)
 GITHUB_USER = 'carlosperate'
 GITHUB_REPO_COUNT = 5
-GITHUB_SKIP_FORK = True
-GITHUB_SHOW_USER_LINK = True
+GITHUB_SKIP_FORK = 'true'
+GITHUB_SHOW_USER_LINK = 'true'
 
 # Twitter timeline (included in bootstrap theme) (deprecated)
 TWITTER_WIDGET_ID = None
