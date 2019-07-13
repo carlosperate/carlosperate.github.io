@@ -12,6 +12,8 @@ if LooseVersion(pelican_version) < LooseVersion('3.7.0'):
     print('Please upgrade Pelican to a version >= 3.7')
     exit(1)
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 # This variable is used for debug purposes
 LOCALHOST_ABSOLUTE = True
 
@@ -34,10 +36,10 @@ if LOCALHOST_ABSOLUTE is True:
 else:
     SITEURL = ''
     RELATIVE_URLS = True
-PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'content')
+PATH = os.path.join(PROJECT_ROOT, 'embeddedlog')
 STATIC_PATHS = ['images']    # Relative to PATH
 OUTPUT_RETENTION = []
-OUTPUT_PATH = 'output/'
+OUTPUT_PATH = os.path.join(PROJECT_ROOT, 'output')
 
 # Internal Pelican cache speeds up build time
 LOAD_CONTENT_CACHE = False
@@ -62,9 +64,9 @@ LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
 
 # Profile picture
-AVATAR = '{}/images/theme/profile_large.jpg'.format(SITEURL)
+AVATAR = SITEURL + '/images/theme/profile_large.jpg'
 
-# Pages data
+# Pages data (relative to PATH)
 PAGE_PATHS = ['pages']
 PAGE_URL = '{slug}/index.html'
 PAGE_SAVE_AS = '{slug}/index.html'
@@ -116,7 +118,7 @@ RELATED_POSTS_MAX = 5
 PLUGIN_YOUTUBE_ADD_CSS = True
 
 # Theme options
-THEME = '../themes/embeddedlog-theme'
+THEME = os.path.join(PROJECT_ROOT, 'themes', 'embeddedlog-theme')
 THEME_STATIC_DIR = 'theme'
 BOOTSTRAP_THEME = 'flatly'
 SHOW_ARTICLE_AUTHOR = True

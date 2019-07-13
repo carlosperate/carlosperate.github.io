@@ -7,9 +7,14 @@ Authors: carlosperate
 related_posts:
 summary: Summary in 50 characters?
 Status: draft
+og_image: /images/something.jpg
 
 
 This is a template. Ideally if I add extra tags I should add them here as well.
+
+<!-- This is a comment -->
+
+<!-- Note: I still need to test the `og_image` page attribute. -->
 
 Contents:
 

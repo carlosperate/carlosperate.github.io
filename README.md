@@ -29,7 +29,7 @@ git clone --recursive https://github.com/carlosperate/carlosperate.github.io.git
 From the root directory of this repository:
 
 ```
-pelican embeddedlog/content -s embeddedlog/pelicanconf.py
+pelican -s pelicanconf.py
 ```
 
 For test general deployment options without using the full deployment script,
@@ -39,11 +39,11 @@ change the following line from `embeddedlog/pelicanconf.py`:
 DEPLOY_RUN = False -> DEPLOY_RUN = True
 ```
 
-For the final publishing the `publishconf.py` script imports the
+For the final publishing the `pelicanconfpublish.py` script imports the
 `pelicanconf.py` and updates or adds values:
 
 ```
-pelican embeddedlog/content -s embeddedlog/publishconf.py
+pelican -s pelicanconfpublish.py
 ```
 
 
