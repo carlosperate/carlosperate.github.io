@@ -8,8 +8,8 @@ import os
 from pelican import __version__ as pelican_version
 
 # Check version of Pelican
-if LooseVersion(pelican_version) < LooseVersion('3.7.0'):
-    print('Please upgrade Pelican to a version >= 3.7')
+if LooseVersion(pelican_version) < LooseVersion('4.0.0'):
+    print('Please upgrade Pelican to a version >= 4.0')
     exit(1)
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -73,9 +73,11 @@ PAGE_SAVE_AS = '{slug}/index.html'
 PAGE_ORDER_BY = 'page-order'
 IGNORE_FILES = ['README.md']
 
-# Categories data
-#CATEGORY_URL = '{category}/{slug}.html'
-#CATEGORY_SAVE_AS = '{category}/{slug}.html'
+# Article and Categories data
+ARTICLE_URL = 'blog/{slug}.html'
+ARTICLE_SAVE_AS = 'blog/{slug}.html'
+CATEGORY_URL = 'blog/category/{slug}.html'
+CATEGORY_SAVE_AS = 'blog/category/{slug}.html'
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 SUMMARY_MAX_LENGTH = 50
