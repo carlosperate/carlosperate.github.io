@@ -13,3 +13,11 @@
     </ol>
     {% endif %}
 {% endblock %}
+
+{% block content_second %}
+    {# When viewing the Blog category, inject the Medium article previews as well #}
+    {% if category == 'Blog' %} 
+        <br /><br />
+        {% include 'includes/medium_preview_list.html' %}
+    {% endif %}
+{% endblock %}
