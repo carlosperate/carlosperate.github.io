@@ -10,3 +10,9 @@
 [submodule "themes/pelican-octopress-theme"]
 	path = themes/pelican-octopress-theme
 	url = https://github.com/duilio/pelican-octopress-theme.git
+[submodule "themes/pelican-hyde"]
+	path = themes/pelican-hyde
+	url = https://github.com/jvanz/pelican-hyde.git
+[submodule "themes/pelican-alchemy"]
+	path = themes/pelican-alchemy
+	url = https://github.com/nairobilug/pelican-alchemy.git
