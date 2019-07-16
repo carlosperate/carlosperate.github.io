@@ -49,7 +49,7 @@ DELETE_OUTPUT_DIRECTORY = True
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = False
 MENUITEMS = (('Blog', SITEURL + '/blog/'),
-             ('About', SITEURL + '/about/index.html'),)
+             ('About', SITEURL + '/about/'),)
 
 # Sidebar
 HIDE_SIDEBAR = True
@@ -74,17 +74,17 @@ PAGE_ORDER_BY = 'page-order'
 IGNORE_FILES = ['README.md']
 
 # Article and Categories data
-ARTICLE_URL = 'blog/{slug}.html'
-ARTICLE_SAVE_AS = 'blog/{slug}.html'
-CATEGORY_URL = 'blog/category/{slug}.html'
-CATEGORY_SAVE_AS = 'blog/category/{slug}.html'
+ARTICLE_URL = '{category}/{slug}.html'
+ARTICLE_SAVE_AS = '{category}/{slug}.html'
+CATEGORY_URL = '{slug}/index.html'
+CATEGORY_SAVE_AS = '{slug}/index.html'
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 SUMMARY_MAX_LENGTH = 50
 
 # Banner/Carousel in pages
 BANNER_ALL_PAGES = True
-BANNER = 'images/banner.jpg'
+BANNER = 'images/banners/default_banner.jpg'
 BANNER_SUBTITLE = 'This is my subtitle'
 
 # General navigation
