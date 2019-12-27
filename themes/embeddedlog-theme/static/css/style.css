@@ -7,6 +7,7 @@ body {
 
 body {
     background-image: url("/images/theme/background_tile.png");
+    background-attachment: fixed;
 }
 
 /* Reduce font size on lower resolutions */
@@ -593,7 +594,14 @@ ul.nav .dropdown-menu li.active a {
     border-radius: 0px 0px 3px 3px;
     background: #FFFFFF !important;
     padding: 32px 32px;
-    /*box-shadow: 0px 0px 24px 1px rgba(130,130,130,0.72);*/
+    /* box-shadow: 0px 0px 24px 1px rgba(130,130,130,0.72); */
+}
+
+.container_body .highlight pre {
+    margin: 0px -32px 16px -32px;
+    padding: 16px 32px;
+    border-radius: 0px;
+    border: none;
 }
 
 .container_footer {
@@ -608,6 +616,13 @@ ul.nav .dropdown-menu li.active a {
     .container_footer {
         padding-left: 16px !important;
         padding-right: 16px !important;
+    }
+
+    .container_body .highlight pre {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: -16px;
+        margin-right: -16px;
     }
 }
 
