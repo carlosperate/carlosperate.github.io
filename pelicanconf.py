@@ -1,21 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
+"""
+This file deals with all the different configuration options for Pelican.
+
+It will configure the right settings based on the Build Mode set in 
+pelicanbuildmode.py.
+"""
 from __future__ import unicode_literals
 from distutils.version import LooseVersion
 import datetime
 import os
-
-from pelican import __version__ as pelican_version
+import sys
 
 # Check version of Pelican
+from pelican import __version__ as pelican_version
 if LooseVersion(pelican_version) < LooseVersion('4.0.0'):
     print('Please upgrade Pelican to a version >= 4.0')
     exit(1)
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Check the Build Mode configured
+this_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(this_dir)
+from pelicanbuildmode import get_build_mode, BuildMode
 
-# This variable is used for debug purposes
-LOCALHOST_ABSOLUTE = True
+BUILD_MODE = get_build_mode()
+print("Build Mode set to: {}".format(BUILD_MODE))
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Website data
 AUTHOR = u'carlosperate'
@@ -30,20 +41,30 @@ BUILD_YEAR = datetime.datetime.now().year
 MEDIUM_URL = 'https://medium.com/@carlosperate'
 
 # Paths data
-if LOCALHOST_ABSOLUTE is True:
-    SITEURL = '//localhost:8080'
-    RELATIVE_URLS = False
-else:
+PORT = 8080
+if BUILD_MODE == BuildMode.LOCALHOST_RELATIVE:
     SITEURL = ''
     RELATIVE_URLS = True
+elif BUILD_MODE == BuildMode.LOCALHOST_ABSOLUTE:
+    SITEURL = '//localhost:{}'.format(PORT)
+    RELATIVE_URLS = False
+elif BUILD_MODE == BuildMode.PUBLISH:
+    SITEURL = '//www.embeddedlog.com'
+    RELATIVE_URLS = False
+else:
+    raise Exception('Incorrect BUILD_MODE value: {}'.format(BUILD_MODE))
 PATH = os.path.join(PROJECT_ROOT, 'embeddedlog')
 STATIC_PATHS = ['images']    # Relative to PATH
 OUTPUT_RETENTION = []
 OUTPUT_PATH = os.path.join(PROJECT_ROOT, 'output')
 
 # Internal Pelican cache speeds up build time
-LOAD_CONTENT_CACHE = False
-DELETE_OUTPUT_DIRECTORY = True
+if BUILD_MODE == BuildMode.LOCALHOST_RELATIVE:
+    LOAD_CONTENT_CACHE = True
+    DELETE_OUTPUT_DIRECTORY = False
+elif BUILD_MODE in (BuildMode.LOCALHOST_ABSOLUTE, BuildMode.PUBLISH):
+    LOAD_CONTENT_CACHE = False
+    DELETE_OUTPUT_DIRECTORY = True
 
 # Menu
 DISPLAY_PAGES_ON_MENU = True
@@ -80,7 +101,7 @@ CATEGORY_URL = '{slug}/index.html'
 CATEGORY_SAVE_AS = '{slug}/index.html'
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
-SUMMARY_MAX_LENGTH = 50
+SUMMARY_MAX_LENGTH = 50    # In words
 
 # Banner/Carousel in pages
 BANNER_ALL_PAGES = True
@@ -103,14 +124,14 @@ MARKDOWN = {
 }
 
 # Plugin settings
-PLUGIN_PATHS = ['plugins', '../plugins']
+PLUGIN_PATHS = [os.path.join(PROJECT_ROOT, 'plugins')]
 PLUGINS = [
     'related_posts',
     'pelican_youtube',
     'embed_tweet',
     'medium_previews'
 ]
-# Still need to pip install typogrify
+# To enable it needs to 'pip install typogrify' first 
 TYPOGRIFY = False
 
 # Plugin: Related Posts
@@ -151,21 +172,37 @@ SHARIFF_BUTTON_STYLE = 'standard'   # standard, icon, icon-count
 SHARIFF_TWITTER_VIA = 'carlosperate'
 SHARIFF_SERVICES = '[&quot;twitter&quot;, &quot;facebook&quot;, &quot;linkedin&quot;, &quot;reddit&quot;, &quot;pocket&quot;, &quot;whatsapp&quot;]'
 
-# Testing stuff
+# In the EmbeddedLog theme this is the top box in the index.html only
 ABOUT_ME = True
 
 # Feed generation is usually not desired when developing
+if BUILD_MODE in (BuildMode.LOCALHOST_RELATIVE, BuildMode.LOCALHOST_ABSOLUTE):
+    FEED_ATOM = None
+    FEED_ALL_ATOM = None
+    CATEGORY_FEED_ATOM = None
+    FEED_RSS = None
+    FEED_ALL_RSS = None
+    CATEGORY_FEED_RSS = None
+elif BUILD_MODE == BuildMode.PUBLISH:
+    FEED_ATOM = 'feeds/feed.atom.xml'
+    FEED_ALL_ATOM = 'feeds/all.atom.xml'
+    CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+    FEED_RSS = 'feeds/feed.rss.xml'
+    FEED_ALL_RSS = 'feeds/all.rss.xml'
+    CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 FEED_DOMAIN = SITEURL
-FEED_ATOM = None
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+TRANSLATION_FEED_RSS = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
-FEED_RSS = None
-FEED_ALL_RSS = None
-CATEGORY_FEED_RSS = None
+
+# Analytics
+if BUILD_MODE in (BuildMode.LOCALHOST_RELATIVE, BuildMode.LOCALHOST_ABSOLUTE):
+    GOOGLE_ANALYTICS = None
+elif BUILD_MODE == BuildMode.PUBLISH:
+    # We don't want any cookies or user tracking
+    GOOGLE_ANALYTICS = None
 
 print('Pelican configuration loaded successfully')
