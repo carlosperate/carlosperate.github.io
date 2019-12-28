@@ -14,6 +14,12 @@ Other changes:
     - SHARIFF_BUTTON_STYLE option created with the update
     - CSS overwritten for round corners
 
+The original pelican-bootstrap3 theme has been moved from its own repository
+https://github.com/DandyDev/pelican-bootstrap3 to be part of pelican-themes:
+https://github.com/getpelican/pelican-themes/commits/master/pelican-bootstrap3
+
+Last sync was at commit: be0a4105c4e748b9abe91893544a5362d8a23772
+
 -----
 
 ## pelican-bootstrap3
@@ -53,7 +59,6 @@ This theme honors the following standard Pelican settings:
 	* `GOOGLE_ANALYTICS` (classic tracking code)
 	* `GOOGLE_ANALYTICS_UNIVERSAL` and `GOOGLE_ANALYTICS_UNIVERSAL_PROPERTY` (Universal tracking code)
 	* `DISQUS_SITENAME`
-	* `PIWIK_URL`, `PIWIK_SSL_URL` and `PIWIK_SITE_ID`
 
 It uses the `tag_cloud` variable for displaying tags in the sidebar. You can control the amount of tags shown with: `TAG_CLOUD_MAX_ITEMS`
 
@@ -131,10 +136,6 @@ You may display on the sidebar the link to the previous and next article in the 
 
 You may display information on the series just under the article title setting `SHOW_SERIES` to `True`.
 
-#### IPython Notebook support
-
-This theme supports including IPython notebooks through the [Liquid Tags plugin](https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags). If you enable the plugin, the theme will automatically include the right CSS/JS to make the notebooks work.
-
 #### Favicon
 
 Set the `FAVICON` option in your `pelicanconf.py`. For example: `FAVICON = 'images/favicon.png'`
@@ -210,9 +211,11 @@ The license choice mirrors the [Creative Commons License Chooser](http://creativ
 
 The theme can show your most recently active GitHub repos in the sidebar. To enable, provide a `GITHUB_USER`. Appearance and behaviour can be controlled using the following variables:
 
-* `GITHUB_REPO_COUNT`
-* `GITHUB_SKIP_FORK`
-* `GITHUB_SHOW_USER_LINK`
+* `GITHUB_REPO_COUNT`: An integer representing the number of repos to display (sorted by modification date, descending)
+* `GITHUB_SKIP_FORK`: Either `'false'` [default] or `'true'`. If `'true'`, exclude forked repositories from display in the sidebar.
+* `GITHUB_SHOW_USER_LINK`: If undefined [default], don't show a link to the `GITHUB_USER`'s user page. If defined, show it.
+
+NOTE: Boolean values will _not_ work here! They will be interpreted as literal strings by JS, so instead use `'true'` and `'false'`
 
 #### Facebook Open Graph
 
@@ -229,7 +232,7 @@ The same image options for Open Graph (see above) can be used for setting images
 
 #### Twitter Timeline
 
-The theme can show your twitter timeline in the sidebar. To enable, provide a `TWITTER_USERNAME` and a `TWITTER_WIDGET_ID`.
+The theme can show your twitter timeline in the sidebar. To enable, provide a `TWITTER_USERNAME` and a `DISPLAY_TWITTER_TIMELINE_ON_SIDEBAR`.
 
 To get a `TWITTER_WIDGET_ID`, go to: https://twitter.com/settings/widgets and select `Create new`. You'll find the TWITTER_WIDGET_ID under the html or in the site url:
 
@@ -250,7 +253,7 @@ As an alternative, you may use [Shariff](https://github.com/heiseonline/shariff)
   * To customize the social media buttons, set
     * `SHARIFF_BACKEND_URL` (see [Shariff Backends](https://github.com/heiseonline/shariff#backends))
     * `SHARIFF_LANG` (`de` (default), `en` or `fr`)
-    * `SHARIFF_ORIENTATION` (`horizontal` (defualt) or `vertical`)
+    * `SHARIFF_ORIENTATION` (`horizontal` (default) or `vertical`)
     * `SHARIFF_SERVICES` (default: `[&quot;facebook&quot;,&quot;googleplus&quot;]`)
     * `SHARIFF_THEME` (`standard` or `gray`)
     * `SHARIFF_TWITTER_VIA` (`True`/`False`, uses `TWITTER_USERNAME`)

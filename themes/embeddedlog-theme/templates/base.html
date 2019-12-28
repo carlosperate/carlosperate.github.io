@@ -10,10 +10,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% if 'liquid_tags.notebook' in PLUGINS %}
-        {% include 'includes/liquid_tags_nb_header.html' %}
-    {% endif %}
-
     {# Favicons are a touchy subject. For reasoning for the following code, see: http://stackoverflow.com/a/23851464/872397 #}
     {% if FAVICON %}
     <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon">
@@ -116,14 +112,19 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                {% if not PAGES_SORT_ATTRIBUTE -%}
+                    {% set PAGES_SORT_ATTRIBUTE = 'title' %}
+                {%- endif %}
                 {% if DISPLAY_PAGES_ON_MENU %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                        {% for p in pages %}
+                        {% for p in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+                            {% if p.url %}
                             <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">
                              {{ p.menulabel|default(p.title) }}
                             </a></li>
+                            {% endif %}
                         {% endfor %}
                         </ul>
                     </li>
@@ -200,10 +201,6 @@
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/respond.min.js"></script>
 
-{% if CUSTOM_JS %}
-    <script src="{{ SITEURL }}/{{ CUSTOM_JS }}"></script>
-{% endif %}
-
 {% if BANNER %}
     <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bodypadding.js"></script>
 {% endif %}
@@ -212,7 +209,6 @@
 {% endif %}
 {% include 'includes/disqus_script.html' %}
 {% include 'includes/ga.html' %}
-{% include 'includes/piwik.html' %}
 
 {% block scripts %}{% endblock %}
 </body>
