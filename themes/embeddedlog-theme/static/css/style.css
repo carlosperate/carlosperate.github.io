@@ -19,26 +19,30 @@ body {
 }
 
 .page-header {
-    margin-top: 32px;
-    padding-bottom: 0px;
-    margin-bottom: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 16px;
+    padding-bottom: 8px;
     border-bottom: none;
 }
-/* Anchor links need to account for nav bar padding (pad 64px, marg -64px) */
-h1 {
+/* Anchor links need to account for nav bar padding (pad 64px, marg -48px) */
+header h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.entry-content h1 {
     padding-top: 64px;
     margin-top: -48px;  /* 16px original -64px anchor */
-    margin-bottom: 16px;
 }
-h2 {
+.entry-content h2 {
     padding-top: 64px;
     margin-top: -16px;  /* 48px original -64px anchor */
 }
-h3 {
+.entry-content h3 {
     padding-top: 64px;
     margin-top: -32px; /* 32px original -64px anchor */
 }
-h4, h5 {
+.entry-content h4, h5 {
     padding-top: 64px;
     margin-top: -40px; /* 24px original -64px anchor */
     font-weight: bold;
@@ -489,6 +493,13 @@ ul.nav .dropdown-menu li.active a {
 .list-group-item {
     border: none;
     padding: 6px 12px;
+}
+
+/*********************************************/
+/* Bottom of the page, after article content */
+/*********************************************/
+#related-posts {
+    margin-top: 16px;
 }
 
 /***************/

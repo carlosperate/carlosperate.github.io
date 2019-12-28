@@ -1,5 +1,5 @@
 {% if article.series %}
-<section class="well" id="related-posts">
+<section class="well" id="series-posts">
    {% set text = SERIES_TEXT|default('Part %(index)s of the %(name)s series') %}
     <h4>{{ text|format(index=article.series.index, name=article.series.name) }}</h4>
     {% if article.series.all_previous %}
