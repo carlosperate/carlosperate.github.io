@@ -18,7 +18,7 @@ The original pelican-bootstrap3 theme has been moved from its own repository
 https://github.com/DandyDev/pelican-bootstrap3 to be part of pelican-themes:
 https://github.com/getpelican/pelican-themes/commits/master/pelican-bootstrap3
 
-Last sync was at commit: be0a4105c4e748b9abe91893544a5362d8a23772
+Last sync was at commit 2019/01/20: be0a4105c4e748b9abe91893544a5362d8a23772
 
 -----
 
@@ -238,13 +238,6 @@ To get a `TWITTER_WIDGET_ID`, go to: https://twitter.com/settings/widgets and se
 
 `https://twitter.com/settings/widgets/TWITTER_WIDGET_ID/edit`
 
-#### AddThis
-
-You can enable sharing buttons through [AddThis](http://www.addthis.com/) by setting `ADDTHIS_PROFILE` to your AddThis profile-id. This will display a **Tweet**, **Facebook Like** and **Google +1** button under each post.
-
-* AddThis automatically adds a short hashtag to the end of your URLs. This lets you reveal how often visitors copy your URL from their address bar to share. Example of URL: `http://domain.com/page.html#UF0983`. This function can be disabled by setting `ADDTHIS_DATA_TRACK_ADDRESSBAR` to _False_.
-* All social buttons are enabled by default. You can disable certain button by setting following properties to _False_: `ADDTHIS_FACEBOOK_LIKE`, `ADDTHIS_TWEET`, `ADDTHIS_GOOGLE_PLUSONE`.
-
 #### Shariff
 
 As an alternative, you may use [Shariff](https://github.com/heiseonline/shariff) by setting `SHARIFF = True`. This will display the privacy enabled social media buttons developed by [heiseonline](https://github.com/heiseonline).
@@ -263,17 +256,3 @@ For a detailed description of each setting, refer to [data attributes](https://g
 #### Footer
 
 The footer will display a copyright message using the AUTHOR variable and the year of the latest post. If a content license mark is enabled (see above), that will be shown as well.
-
-### Live example
-
-[This is my website](http://dandydev.net)
-
-If you want more examples of what you could do with this theme, have a [look here](EXAMPLES.md).
-
-### Screenshot
-
-![](screenshot.png)
-
-![](screenshot-article.png)
-
-
