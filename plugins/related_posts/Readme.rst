@@ -1,8 +1,11 @@
-Last updated on 2019/12/29 with commit from the 2016/05/02:
-    
+Last synced on 2019/12/29 with commit from the 2016/05/02:
+
 - b2a2fe3eeb237fb4443eb3f9ec25453a8b186faf
 - https://github.com/getpelican/pelican-plugins/commit/b2a2fe3eeb237fb4443eb3f9ec25453a8b186faf
 - https://github.com/getpelican/pelican-plugins/commits/master/related_posts
+
+Changes made to this plugin:
+- If a related_posts attribute is given, ignore the limits from RELATED_POSTS_MAX
 
 -----
 

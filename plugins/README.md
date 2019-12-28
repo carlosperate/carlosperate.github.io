@@ -3,9 +3,10 @@
 This directory contains hard copies of the pelican pluggins used for the website.
 
 * Related Posts: https://github.com/getpelican/pelican-plugins/tree/master/related_posts
+    - Updated for this website, details in its README
 * Pelican Youtube: https://github.com/kura/pelican_youtube
-    - Updated to work with Markdown
+    - Updated to work with Markdown, details in its README
 * Embed Tweet: https://github.com/professorsloth/pelican-embed-tweet
-    - Updated and expanded for this website
+    - Updated and expanded for this website, details in its README
 * Medium Preview
     - Custom built for this website to include Medium Post previews
