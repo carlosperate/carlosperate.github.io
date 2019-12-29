@@ -68,15 +68,17 @@ elif BUILD_MODE in (BuildMode.LOCALHOST_ABSOLUTE, BuildMode.PUBLISH):
 
 # Menu
 DISPLAY_PAGES_ON_MENU = True
+PAGES_SORT_ATTRIBUTE = 'page-order'
 DISPLAY_CATEGORIES_ON_MENU = False
 MENUITEMS = (('Blog', SITEURL + '/blog/'),
              ('About', SITEURL + '/about/'),)
 
 # Sidebar
 HIDE_SIDEBAR = True
-DISPLAY_CATEGORIES_ON_SIDEBAR = False
+DISPLAY_CATEGORIES_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 DISPLAY_TAGS_ON_SIDEBAR = True
+DISPLAY_TWITTER_TIMELINE_ON_SIDEBAR = True
 TAG_CLOUD_MAX_ITEMS = 10
 SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('twitter', 'https://twitter.com/carlosperate'),
@@ -123,6 +125,9 @@ MARKDOWN = {
     'output_format': 'html5',
 }
 
+# Pelican can use Typogrify, but needs to 'pip install typogrify' first
+TYPOGRIFY = False
+
 # Plugin settings
 PLUGIN_PATHS = [os.path.join(PROJECT_ROOT, 'plugins')]
 PLUGINS = [
@@ -131,11 +136,10 @@ PLUGINS = [
     'embed_tweet',
     'medium_previews'
 ]
-# To enable it needs to 'pip install typogrify' first 
-TYPOGRIFY = False
 
 # Plugin: Related Posts
-RELATED_POSTS_MAX = 5
+RELATED_POSTS_MAX = 3
+RELATED_POSTS_SKIP_SAME_CATEGORY = False
 
 # Plugin: YouTube, manually created variable
 PLUGIN_YOUTUBE_ADD_CSS = True
@@ -155,9 +159,6 @@ GITHUB_USER = 'carlosperate'
 GITHUB_REPO_COUNT = 5
 GITHUB_SKIP_FORK = 'true'
 GITHUB_SHOW_USER_LINK = 'true'
-
-# Twitter timeline (included in bootstrap theme) (deprecated)
-TWITTER_WIDGET_ID = None
 
 # Facebook/Twitter Cards (included in bootstrap theme)
 USE_OPEN_GRAPH = True
