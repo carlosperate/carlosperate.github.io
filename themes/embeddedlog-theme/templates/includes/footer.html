@@ -3,20 +3,20 @@
       <hr>
       <div class="row container_footer">
          {% if articles %}
-            {% if articles[0].modified %}
-               {% set copy_date = articles[0].modified.strftime('%Y') %}
-            {% else %}
-               {% set copy_date = articles[0].date.strftime('%Y') %}
-            {% endif %}
+            {% set copy_start_date = namespace(lowest_date=articles[0].date) %}
+            {% for _article in articles %}
+               {% if _article.date < copy_start_date.lowest_date %}
+                  {% set copy_start_date.lowest_date = _article.date %}
+               {% endif %}
+            {% endfor %}
+            {% set copy_start_date = copy_start_date.lowest_date.strftime('%Y') + ' -' %}
          {% else %}
             {% set copy_date = '' %}
          {% endif %}
          <div class="col-xs-9">
             <p>
-               &copy; {{ copy_date }} - {{ BUILD_YEAR }} <a href="https://github.com/carlosperate" target="_blank">{{ AUTHOR }}</a>
-               &middot; Powered by 
-               <a href="https://docs.getpelican.com/" target="_blank">Pelican</a> and 
-               <a href="https://getbootstrap.com" target="_blank">Bootstrap</a>
+               &copy; {{ copy_start_date }} {{ BUILD_YEAR }} <a href="https://twitter.com/carlosperate" target="_blank">{{ AUTHOR }}</a>
+               &middot; Powered by <a href="https://getpelican.com" target="_blank">Pelican</a>
             </p>
             <p><small>
                {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
