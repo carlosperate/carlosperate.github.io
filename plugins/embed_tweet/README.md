@@ -4,12 +4,18 @@ https://github.com/lqez/pelican-embed-tweet , that has been modified to only
 add the twitter javascripts files when a tweet is embedded into the page.__
 
 Further modifications done for this project:
+* Add option to align the tweet widget with `EMBED_TWEET_ALIGN` setting:
+    - 'left' and 'right' offer in-line floating alignment
+    - 'center' aligns in its own block
+    - None will not set the data align, and align left in its own block
 * Pelican not always parses the `@` sign into `&#64;`, so do an additional pass
 to parse it.
 * Add extra tests
 * Formatting
 
 Everything below this line corresponds to the original README.md file.
+
+-----
 
 pelican-embed-tweet
 ===================

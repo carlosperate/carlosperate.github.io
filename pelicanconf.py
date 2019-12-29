@@ -144,6 +144,9 @@ RELATED_POSTS_SKIP_SAME_CATEGORY = False
 # Plugin: YouTube, manually created variable
 PLUGIN_YOUTUBE_ADD_CSS = True
 
+# Plugin: Embed Tweet, values 'left', 'right', 'center', None
+EMBED_TWEET_ALIGN = 'center'
+
 # Theme options
 THEME = os.path.join(PROJECT_ROOT, 'themes', 'embeddedlog-theme')
 THEME_STATIC_DIR = 'theme'
