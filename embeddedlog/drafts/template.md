@@ -43,10 +43,19 @@ Link to a tweeter username: @carlosperate
 
 ### Additional Formatting with HTML
 
+These two images fit side to side:
+
 <img src="/images/theme/background_tile.png" alt="alt 1" width="49%">
 <img src="/images/theme/background_tile.png" alt="alt 2" width="49%">
 
-Some other text.
+And for a full width image (only works with no sidebar):
+
+<img src="/images/banners/quickhue_banner.png" alt="alt 3" class="full-width">
+
+And this one is just slightly wider than the container (only works with no
+sidebar):
+
+<img src="/images/banners/quickhue_banner.png" alt="alt 3" class="wider-than-parent">
 
 
 ## Adding YouTube Videos

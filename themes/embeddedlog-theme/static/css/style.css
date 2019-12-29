@@ -466,7 +466,6 @@ ul.nav .dropdown-menu li.active a {
     background-size: 32px 32px;
     border-radius: 50%;
     display: block;
-    margin: 15px 0px 0px -2px;
     height: 32px;
     width: 32px;
     float: left;
@@ -642,4 +641,88 @@ ul.nav .dropdown-menu li.active a {
 /**********************/
 .shariff-button {
     border-radius: 6px;
+}
+
+/*******************/
+/* General Helpers */
+/*******************/
+.full-width {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border: solid 10px #0a0a0a73;
+}
+@media (max-width: 767px) {
+    .full-width {
+        border-width: 6px;
+    }
+}
+
+.wider-than-parent {
+    width: calc(100% + 150px) !important;
+    max-width: calc(100% + 150px) !important;
+    margin-left: -75px;
+    margin-right: -75px;
+    border: solid 10px #0a0a0a80;
+}
+@media (max-width: 1250px) {
+    /* In-between state before content width decreases and */
+    /* this image element no longer fits in the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+}
+@media (max-width: 1200px) {
+    .wider-than-parent {
+        width: calc(100% + 120px) !important;
+        max-width: calc(100% + 120px) !important;
+        position: static;
+        margin-left: -60px;
+        margin-right: -60px;
+    }
+}
+@media (max-width: 1023px) {
+    /* In-between state before content width decreases and */
+    /* this image element no longer fits in the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+}
+@media (max-width: 991px) {
+    .wider-than-parent {
+        width: calc(100% + 120px) !important;
+        max-width: calc(100% + 120px) !important;
+        position: static;
+        margin-left: -60px;
+        margin-right: -60px;
+    }
+}
+@media (max-width: 805px) {
+    /* A bit before the content width change as it stops fitting the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        border-width: 6px;
+    }
 }
