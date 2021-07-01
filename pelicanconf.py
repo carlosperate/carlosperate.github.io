@@ -37,9 +37,6 @@ LOCALE = 'C'
 DEFAULT_LANG = u'en'
 BUILD_YEAR = datetime.datetime.now().year
 
-# Medium URL used in different parts of website/theme
-MEDIUM_URL = 'https://medium.com/@carlosperate'
-
 # Paths data
 PORT = 8080
 if BUILD_MODE == BuildMode.LOCALHOST_RELATIVE:
@@ -82,7 +79,7 @@ DISPLAY_TWITTER_TIMELINE_ON_SIDEBAR = True
 TAG_CLOUD_MAX_ITEMS = 10
 SOCIAL = (('github', 'https://github.com/carlosperate'),
           ('twitter', 'https://twitter.com/carlosperate'),
-          ('medium', MEDIUM_URL),)
+          ('medium', 'https://medium.com/@carlosperate'),)
 LINKS = (('The Amp Hour podcast', 'http://www.theamphour.com'),
          ('Embedded.fm podcast', 'http://embedded.fm'),)
 
@@ -137,6 +134,9 @@ PLUGINS = [
     'medium_previews'
 ]
 
+###############################################################################
+# Plugins config
+###############################################################################
 # Plugin: Related Posts
 RELATED_POSTS_MAX = 3
 RELATED_POSTS_SKIP_SAME_CATEGORY = False
@@ -147,7 +147,12 @@ PLUGIN_YOUTUBE_ADD_CSS = True
 # Plugin: Embed Tweet, values 'left', 'right', 'center', None
 EMBED_TWEET_ALIGN = 'center'
 
-# Theme options
+# Plugin: Medium, URL used in different parts of website/theme
+MEDIUM_URL = 'https://medium.com/@carlosperate'
+
+###############################################################################
+# Theme specific configuration
+###############################################################################
 THEME = os.path.join(PROJECT_ROOT, 'themes', 'embeddedlog-theme')
 THEME_STATIC_DIR = 'theme'
 SHOW_ARTICLE_AUTHOR = True
@@ -179,6 +184,16 @@ SHARIFF_SERVICES = '[&quot;twitter&quot;, &quot;facebook&quot;, &quot;linkedin&q
 # In the EmbeddedLog theme this is the top box in the index.html only
 ABOUT_ME = True
 
+# Analytics
+if BUILD_MODE in (BuildMode.LOCALHOST_RELATIVE, BuildMode.LOCALHOST_ABSOLUTE):
+    GOOGLE_ANALYTICS = None
+elif BUILD_MODE == BuildMode.PUBLISH:
+    # We don't want any cookies or user tracking
+    GOOGLE_ANALYTICS = None
+
+###############################################################################
+# Feed configuration
+###############################################################################
 # Feed generation is usually not desired when developing
 if BUILD_MODE in (BuildMode.LOCALHOST_RELATIVE, BuildMode.LOCALHOST_ABSOLUTE):
     FEED_ATOM = None
@@ -201,12 +216,5 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
-
-# Analytics
-if BUILD_MODE in (BuildMode.LOCALHOST_RELATIVE, BuildMode.LOCALHOST_ABSOLUTE):
-    GOOGLE_ANALYTICS = None
-elif BUILD_MODE == BuildMode.PUBLISH:
-    # We don't want any cookies or user tracking
-    GOOGLE_ANALYTICS = None
 
 print('Pelican configuration loaded successfully')
