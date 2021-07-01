@@ -9,28 +9,37 @@
 
 
 
-
         <meta name="author" content="carlosperate" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Embedded Log" />
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Embedded Log"/>
-        <meta property="og:url" content="//www.embeddedlog.com"/>
+        <meta property="og:url" content=""/>
         <meta property="og:description" content="Embedded Log"/>
 
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@carlosperate">
+        <meta name="twitter:creator" content="@carlosperate">
+    <meta name="twitter:domain" content="">
 
+    <!-- YouTube plugin css -->
+    <link rel="stylesheet" href="/theme/css/youtube.css" type="text/css"/>
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="//www.embeddedlog.com/theme/css/bootstrap.flatly.min.css" type="text/css"/>
-    <link href="//www.embeddedlog.com/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="//www.embeddedlog.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="//www.embeddedlog.com/theme/css/style.css" type="text/css"/>
-        <link href="//www.embeddedlog.com/theme/css/shariff/shariff.min.css" rel="stylesheet">
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/theme/css/shariff/shariff.min.css" rel="stylesheet">
 
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Embedded Log ATOM Feed"/>
 
-
+        <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+              title="Embedded Log RSS Feed"/>
 
 </head>
 <body>
@@ -44,30 +53,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="//www.embeddedlog.com/" class="navbar-brand">
+            <a href="/" class="navbar-brand">
 Embedded Log            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="//www.embeddedlog.com/ardublockly/index.html">
+                            <li><a href="/ardublockly/index.html">
                              Ardublockly
                             </a></li>
-                            <li><a href="//www.embeddedlog.com/LightUpPi-Alarm/index.html">
+                            <li><a href="/LightUpPi-Alarm/index.html">
                              LightUp Alarm
                             </a></li>
-                            <li><a href="//www.embeddedlog.com/PebbleQuickHue/index.html">
+                            <li><a href="/PebbleQuickHue/index.html">
                              QuickHue for Pebble
                             </a></li>
                         </ul>
                     </li>
-                    <li><a href="//www.embeddedlog.com/category/blog.html">Blog</a></li>
-                    <li><a href="//www.embeddedlog.com/about/index.html">About</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="//www.embeddedlog.com/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -81,7 +90,7 @@ Embedded Log            </a>
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0)
         ),
-        url("//www.embeddedlog.com/images/banner.jpg");
+        url("/images/banners/default_banner.jpg");
     }
     .carousel-one{
         background-image:
@@ -89,7 +98,7 @@ Embedded Log            </a>
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0)
         ),
-        url("//www.embeddedlog.com/images/banners/ardublockly_banner.png");
+        url("/images/banners/ardublockly_banner.png");
     }
     .carousel-two{
         background-image:
@@ -97,7 +106,7 @@ Embedded Log            </a>
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0)
         ),
-        url("//www.embeddedlog.com/images/banners/default_banner.jpg");
+        url("/images/banners/default_banner.jpg");
     }
     .carousel-three{
         background-image:
@@ -105,7 +114,7 @@ Embedded Log            </a>
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0)
         ),
-        url("//www.embeddedlog.com/images/banners/quickhue_banner.png");
+        url("/images/banners/quickhue_banner.png");
     }
 </style>
 
@@ -124,13 +133,12 @@ Embedded Log            </a>
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
-                            <a href="//www.embeddedlog.com/ardublockly/index.html"><h2>Ardublockly</h2>
-                            Visual Programming for Arduino</a>
+                            <h2>Ardublockly</h2>
+                            <p>Visual Programming for Arduino</p>
                         </div>
                         <div class="table_row_buttons">
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly/releases" target="_blank"><span class="fa fa-windows"></span>Download for Windows</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly" target="_blank"><span class="fa fa-github"></span>View on GitHub</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly/archive/master.zip"><span class="fa fa-file-zip-o"></span>Download Source code</a>
+                            <a class="btn btn-primary" href="//ardublockly.embeddedlog.com" target="_blank"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
                         </div>
                         <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
                     </div>
@@ -140,13 +148,12 @@ Embedded Log            </a>
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
-                            <a href="//www.embeddedlog.com/LightUpPi-Alarm/index.html"><h2>LightUp Alarm</h2>
-                            Raspberry Pi Alarm Clock with sunrise light, coffee machine control, physical snooze button, and Android companion app</a>
+                            <h2>LightUp Alarm</h2>
+                            <p>Raspberry Pi Alarm Clock with sunrise light, coffee machine control, physical snooze button, and Android app</p>
                         </div>
                         <div class="table_row_buttons">
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm/archive/master.zip"><span class="fa fa-linux"></span>Raspberry Pi Software</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpDroid-Alarm/releases" target="_blank"><span class="fa fa-android"></span>Android App</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm" target="_blank"><span class="fa fa-github"></span>View on GitHub</a>
+                            <a class="btn btn-primary" href="//lightupalarm.embeddedlog.com" target="_blank"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
                         </div>
                         <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
                     </div>
@@ -156,13 +163,12 @@ Embedded Log            </a>
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
-                            <a href="//www.embeddedlog.com/PebbleQuickHue/index.html"><h2>QuickHue for Pebble</h2>
-                            Hue Lights control from a Pebble smarthphone</a>
+                            <h2>QuickHue for Pebble</h2>
+                            <p>Hue Lights control from a Pebble smarthphone<p>
                         </div>
                         <div class="table_row_buttons">
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue/raw/master/bin/QuickHue.pbw"><span class="fa fa-clock-o"></span>Download for Pebble</a>
-                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue" target="_blank"><span class="fa fa-github"></span>View on GitHub</a>
-                            <a  class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue/archive/master.zip"><span class="fa fa-file-zip-o"></span>Download Source code</a>
+                            <a class="btn btn-primary" href="//quickhue.embeddedlog.com"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
                         </div>
                         <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
                     </div>
@@ -183,9 +189,11 @@ Embedded Log            </a>
 </div><!-- End Banner -->
 <div class="container container_body">
     <div class="row">
-        <div class="col-sm-9">
+            <div class="col-lg-12">
+            </div>
+        <div class="col-lg-12">
     <ol class="breadcrumb">
-        <li><a href="//www.embeddedlog.com" title="Embedded Log"><i class="fa fa-home fa-lg"></i></a></li>
+        <li><a href="" title="Embedded Log"><i class="fa fa-home fa-lg"></i></a></li>
         <li class="active">Categories</li>
     </ol>
 
@@ -200,83 +208,13 @@ Embedded Log            </a>
                 </div>
                 <div id="collapse-blog" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2015-04-20T00:00:00+01:00">Mon 20 April 2015</time></span> <a href="//www.embeddedlog.com/static-docs-from-github-wiki.html">Build static documentation from a GitHub Wiki</a></p>
+                        <p><span class="categories-timestamp"><time datetime="2015-04-20T00:00:00+01:00">20/04/2015</time></span> <a href="/blog/static-docs-from-github-wiki.html">Build static documentation from a GitHub Wiki</a></p>
                     </div>
                 </div>
             </div>
         </div>
 
     </section>
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-
-<section class="well well-sm">
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item"><img src="//www.embeddedlog.com/images/theme/profile.jpg" class="profile_pic" /><h4><span class="icon-label">Social</span></h4>
-              <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="https://github.com/carlosperate" target="_blank"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-                <li class="list-group-item"><a href="https://twitter.com/carlosperate" target="_blank"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
-                <li class="list-group-item"><a href="https://plus.google.com/109111328639820363664" target="_blank"><i class="fa fa-google-plus-square fa-lg"></i> google+</a></li>
-              </ul>
-            </li>
-
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="//www.embeddedlog.com/static-docs-from-github-wiki.html">
-                            Build static documentation from a GitHub Wiki
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-            <li class="list-group-item"><a href="//www.embeddedlog.com/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-                <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-4">
-                        <a href="//www.embeddedlog.com/tag/documentation.html">
-                            documentation
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="//www.embeddedlog.com/tag/github.html">
-                            github
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="//www.embeddedlog.com/tag/web-tech.html">
-                            web-tech
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-
-    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
-        <div id="gh_repos">
-            <p class="list-group-item">Status updating...</p>
-        </div>
-            <a href="https://github.com/carlosperate" target="_blank">@carlosperate</a> on GitHub
-    </li>
-    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-      <ul class="list-group" id="links">
-        <li class="list-group-item">
-            <a href="http://www.theamphour.com" target="_blank">
-                The Amp Hour podcast
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://embedded.fm" target="_blank">
-                Embedded.fm podcast
-            </a>
-        </li>
-      </ul>
-    </li>
-    </ul>
-</section>
-            </aside>
         </div>
     </div>
 </div>
@@ -286,69 +224,32 @@ Embedded Log            </a>
       <div class="row container_footer">
          <div class="col-xs-9">
             <p>
-               &copy; 2015 <a href="https://github.com/carlosperate" target="_blank">carlosperate</a>
-               &middot; Powered by 
-               <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> and 
-               <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+               &copy; 2015 - 2021 <a href="https://twitter.com/carlosperate" target="_blank">carlosperate</a>
+               &middot; Powered by <a href="https://getpelican.com" target="_blank">Pelican</a>
             </p>
-            <p><small>                     Content
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
-  <!--a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a-->
-
-               Attribution for all other resources used can be found <a href="//www.embeddedlog.com/credits/index.html">here.</a>
-            </small></p>
          </div>
          <div class="col-xs-3"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+         <div class="col-xs-12">
+            <p><small>                     Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  <!--a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a-->
+
+<br>
+               Attribution for all other resources used can be found <a href="/credits/index.html">here.</a>
+            </small></p>
+         </div>
       </div>
    </div>
 </footer>
-<script src="//www.embeddedlog.com/theme/js/jquery.min.js"></script>
+<script src="/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="//www.embeddedlog.com/theme/js/bootstrap.min.js"></script>
+<script src="/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="//www.embeddedlog.com/theme/js/respond.min.js"></script>
+<script src="/theme/js/respond.min.js"></script>
 
-    <script src="//www.embeddedlog.com/theme/js/bodypadding.js"></script>
-    <!-- GitHub JS -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if (!window.jXHR) {
-                var jxhr = document.createElement('script');
-                jxhr.type = 'text/javascript';
-                jxhr.src = '//www.embeddedlog.com/theme/js/jXHR.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(jxhr, s);
-            }
-
-            github.showRepos({
-                user: 'carlosperate',
-                count: 5,
-                skip_forks: true,
-                target: '#gh_repos'
-            });
-        });
-    </script>
-    <script src="//www.embeddedlog.com/theme/js/github.js" type="text/javascript"></script>
-    <!-- End GitHub JS Code -->
-    <!-- Google Analytics -->
-    <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-58081399-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
+    <script src="/theme/js/bodypadding.js"></script>
 
 </body>
 </html>

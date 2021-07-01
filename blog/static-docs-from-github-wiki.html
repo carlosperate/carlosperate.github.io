@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Build static documentation from a GitHub Wiki - Embedded Log</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="canonical" href="/blog/static-docs-from-github-wiki.html">
+
+        <meta name="author" content="carlosperate" />
+        <meta name="keywords" content="github,documentation,web-tech" />
+        <meta name="description" content="This article describes how to use Python and MkDocs to generate static pages for documentation written in a GitHub Wiki. This can be useful to take advantage of the GitHub Wiki features and still provide offline access to the information in a user friendly format that can be easily embedded as a help file." />
+
+        <meta property="og:site_name" content="Embedded Log" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Build static documentation from a GitHub Wiki"/>
+        <meta property="og:url" content="/blog/static-docs-from-github-wiki.html"/>
+        <meta property="og:description" content="This article describes how to use Python and MkDocs to generate static pages for documentation written in a GitHub Wiki. This can be useful to take advantage of the GitHub Wiki features and still provide offline access to the information in a user friendly format that can be easily embedded as a help file."/>
+        <meta property="article:published_time" content="2015-04-20" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="github" />
+            <meta property="article:tag" content="documentation" />
+            <meta property="article:tag" content="web-tech" />
+            <meta property="article:author" content="carlosperate" />
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@carlosperate">
+        <meta name="twitter:creator" content="@carlosperate">
+    <meta name="twitter:domain" content="">
+
+    <!-- YouTube plugin css -->
+    <link rel="stylesheet" href="/theme/css/youtube.css" type="text/css"/>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/theme/css/shariff/shariff.min.css" rel="stylesheet">
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Embedded Log ATOM Feed"/>
+
+        <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate"
+              title="Embedded Log RSS Feed"/>
+        <link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Embedded Log Blog ATOM Feed"/>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Embedded Log            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/ardublockly/index.html">
+                             Ardublockly
+                            </a></li>
+                            <li><a href="/LightUpPi-Alarm/index.html">
+                             LightUp Alarm
+                            </a></li>
+                            <li><a href="/PebbleQuickHue/index.html">
+                             QuickHue for Pebble
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<style>
+    #banner{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("/images/banners/default_banner.jpg");
+    }
+    .carousel-one{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("/images/banners/ardublockly_banner.png");
+    }
+    .carousel-two{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("/images/banners/default_banner.jpg");
+    }
+    .carousel-three{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        url("/images/banners/quickhue_banner.png");
+    }
+</style>
+
+<div id="banner">
+    <div id="carousel-projects" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators" id="carousel-indicators">
+            <li data-target="#carousel-projects" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-projects" data-slide-to="1"></li>
+            <li data-target="#carousel-projects" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active carousel-base carousel-one">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <h2>Ardublockly</h2>
+                            <p>Visual Programming for Arduino</p>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="//ardublockly.embeddedlog.com" target="_blank"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/ardublockly" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item carousel-base carousel-two">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <h2>LightUp Alarm</h2>
+                            <p>Raspberry Pi Alarm Clock with sunrise light, coffee machine control, physical snooze button, and Android app</p>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="//lightupalarm.embeddedlog.com" target="_blank"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/LightUpPi-Alarm" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item carousel-base carousel-three">
+                <div class="carousel-content">
+                    <div class="table_div">
+                        <div class="table_row_text">
+                            <h2>QuickHue for Pebble</h2>
+                            <p>Hue Lights control from a Pebble smarthphone<p>
+                        </div>
+                        <div class="table_row_buttons">
+                            <a class="btn btn-primary" href="//quickhue.embeddedlog.com"><span class="fa fa-info-circle"></span>Find out more</a>
+                            <a class="btn btn-primary" href="https://github.com/carlosperate/PebbleQuickHue" target="_blank"><span class="fab fa-github"></span> View on GitHub</a>
+                        </div>
+                        <div class="table_row_text carousel-indicators-placeholder">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-projects" role="button" data-slide="prev" id="carousel-control-prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-projects" role="button" data-slide="next" id="carousel-control-next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div><!-- End Banner -->
+<div class="container container_body">
+    <div class="row">
+            <div class="col-lg-12">
+            </div>
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="" title="Embedded Log"><i class="fa fa-home fa-lg"></i></a></li>
+                <li class="active">Build static documentation from a GitHub Wiki</li>
+            </ol>
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/blog/static-docs-from-github-wiki.html"
+                       rel="bookmark"
+                       title="Permalink to Build static documentation from a GitHub Wiki">
+                        Build static documentation from a GitHub Wiki
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-04-20T00:00:00+01:00"> 20/04/2015</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="/author/carlosperate.html"><i class="fa fa-user"></i> carlosperate</a>
+
+        <span class="label label-default">Category</span>
+        <a href="/blog/index.html">Blog</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/github.html">github</a>
+        /
+	<a href="/tag/documentation.html">documentation</a>
+        /
+	<a href="/tag/web-tech.html">web-tech</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>One of the goals of <a href="http://www.embeddedlog.com/ardublockly/index.html">Ardublockly</a>, specially taking in consideration that it is based on web technologies, is to be deployable to offline systems without additional dependencies (other than the Arduino IDE). For its documentation <a href="https://github.com/carlosperate/ardublockly/wiki">GitHub Wikis</a> was chosen, as it is easy to use, can be viewed and edited directly from the GitHub website, and integrates quite well with its <a href="https://github.com/carlosperate/ardublockly">GitHub repository</a>. So a way to provide offline access to this documentation was required, and because the project build procedure is based on Python, a solution using this language was preferred.</p>
+<p><a href="http://www.mkdocs.org">MkDocs</a> turned out to be a perfect fit for this purpose. MkDocs is a static site generator, based on Markdown files (GitHub Wiki's default format) and tailored specifically for documentation.</p>
+<p>So this article will cover the installation, configuration and automation of static documentation from a GitHub Wiki using MkDocs.</p>
+<p>Contents:</p>
+<div class="toc">
+<ul>
+<li><a href="#installing-mkdocs">Installing MkDocs</a></li>
+<li><a href="#creating-a-mkdocs-project-and-adding-the-wiki-content">Creating a MkDocs project and adding the Wiki content</a></li>
+<li><a href="#configure-the-mkdocs-project">Configure the MkDocs project</a></li>
+<li><a href="#test-the-static-page-generator">Test the static page generator</a></li>
+<li><a href="#create-a-python-build-script">Create a Python build script</a><ul>
+<li><a href="#git-pull-the-latest-changes">Git Pull the latest changes</a></li>
+<li><a href="#edit-mkdocs-configuration-file">Edit MkDocs configuration file</a></li>
+<li><a href="#build-mkdocs">Build MkDocs</a></li>
+<li><a href="#add-index-redirect">Add Index redirect</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<h2 id="installing-mkdocs">Installing MkDocs</h2>
+<p>MkDocs can be easily installed using pip (as with any other Python project, it is highly recommended to use <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs">virtual environments</a>):</p>
+<div class="highlight"><pre><span></span>$ pip install mkdocs
+</pre></div>
+
+
+<h2 id="creating-a-mkdocs-project-and-adding-the-wiki-content">Creating a MkDocs project and adding the Wiki content</h2>
+<p>Navigate to the folder where the project files are to be saved and then execute in the console:</p>
+<div class="highlight"><pre><span></span>$ mkdocs new my-project
+</pre></div>
+
+
+<p>This will create the new <code>mkdocs</code> project folder, where the documentation content must also be saved, so navigate inside it to clone the GitHub Wiki repository.</p>
+<p>In the case of the Ardublockly project, it was saved within a git repository already, so a <a href="http://git-scm.com/docs/git-submodule">Git Submodule</a> was used instead of a simple <code>git clone</code>.</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;username&gt;/&lt;repository&gt;.wiki.git
+</pre></div>
+
+
+<p>OR</p>
+<div class="highlight"><pre><span></span>$ git submodule add https://github.com/&lt;username&gt;/&lt;repository&gt;.wiki.git
+</pre></div>
+
+
+<p>(Don't forget to replace <code>&lt;username&gt;</code> and <code>&lt;repository&gt;</code> with your own information.)</p>
+<h2 id="configure-the-mkdocs-project">Configure the MkDocs project</h2>
+<p>Now the MkDocs configuration file <code>mkdocs.yml</code> has to be edited to point to the new content folder by setting the <code>docs_dir</code> property.</p>
+<p>Open the <code>mkdocs.yml</code> file, which would already contain the <code>site_name</code> property and add the wiki files directory (remember to surround the directory string with single quotation marks):</p>
+<div class="highlight"><pre><span></span><span class="nt">site_name</span><span class="p">:</span> <span class="s">&#39;Documentation</span><span class="nv"> </span><span class="s">Title&#39;</span>
+
+<span class="nt">docs_dir</span><span class="p">:</span> <span class="s">&#39;&lt;wiki</span><span class="nv"> </span><span class="s">folder</span><span class="nv"> </span><span class="s">directory&gt;&#39;</span>
+</pre></div>
+
+
+<p>Other project properties can also be added, refer to the <a href="http://www.mkdocs.org/user-guide/configuration/">MkDoc documentation</a> for more information.</p>
+<p>MkDocs requires all the markdown files to be generated listed under the <code>pages</code> property. We can automate this step later using a Python script, so for this specific example the <code>pages</code> property should be placed at the very end of the <code>mkdocs.yml</code> file (with all your current files), ideally with a warning:</p>
+<div class="highlight"><pre><span></span><span class="c1"># It is IMPERATIVE to leave this property to the end without anything after it.</span>
+<span class="c1"># This is because the build file will delete everything after this line and</span>
+<span class="c1"># replace it with newly generated data. </span>
+<span class="nt">pages</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;index.md&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;Home&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+
+
+<h2 id="test-the-static-page-generator">Test the static page generator</h2>
+<p>MkDocs comes with a handy built-in web server that lets you preview the generated content live.</p>
+<p>Navigate to the MkDocs project folder and execute the following command:</p>
+<div class="highlight"><pre><span></span>$ mkdocs serve
+</pre></div>
+
+
+<p>This will serve the pages at: <code>http://127.0.0.1:8000/</code></p>
+<p>Make sure there is an <code>index.md</code> to generate the <code>index.html</code> file, and check if everything has been rendered as expected.</p>
+<p>To deploy the pages you can build the project, into the default <code>site</code> folder, using the following command:</p>
+<div class="highlight"><pre><span></span>$ mkdocs build
+</pre></div>
+
+
+<h2 id="create-a-python-build-script">Create a Python build script</h2>
+<p>Now that we have a static HTML version of the Wiki markdown files, we can start looking into automating with Python all the steps required to update these files.</p>
+<p>First let's predefine some path and repository data, this will depend on your own environment and repository information, so remember to fill the missing information. For this example the build file was included on the parent directory of the MkDocs project folder:</p>
+<div class="highlight"><pre><span></span><span class="n">GITHUB_USER</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">WIKI_NAME</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">GITHUB_WIKI_REPO</span> <span class="o">=</span> <span class="s2">&quot;github.com/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">.git&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">GITHUB_USER</span><span class="p">,</span> <span class="n">WIKI_NAME</span><span class="p">)</span>
+
+<span class="n">MKDOCS_FOLDER</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">THIS_FILE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">MKDOCS_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">THIS_FILE_DIR</span><span class="p">,</span> <span class="n">MKDOCS_FOLDER</span><span class="p">)</span>
+</pre></div>
+
+
+<p>For the sake of simplicity a lot of the exception handling and error management has been left out of these code snippets, but a more comprehensive source file is linked in the <a href="#Conclusion">Conclusion</a>.</p>
+<h3 id="git-pull-the-latest-changes">Git Pull the latest changes</h3>
+<p>The first step to update the documentation is to pull the latest changes from the wiki repository. For this task the script will use subprocesses and assumes that Git is installed on the system:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<span class="k">def</span> <span class="nf">pull_wiki_repo</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Pulls latest changes from the wiki repo. &quot;&quot;&quot;</span>
+    <span class="c1"># Set working directory to the wiki repository</span>
+    <span class="n">wiki_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">,</span> <span class="n">WIKI_NAME</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">wiki_folder</span><span class="p">)</span>
+
+    <span class="c1"># Ensure the subfolder selected is the correct repository</span>
+    <span class="n">PIPE</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
+    <span class="n">git_process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;--get&quot;</span><span class="p">,</span> <span class="s2">&quot;remote.origin.url&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
+    <span class="n">std_op</span><span class="p">,</span> <span class="n">std_err_op</span> <span class="o">=</span> <span class="n">git_process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">GITHUB_WIKI_REPO</span> <span class="ow">in</span> <span class="n">std_op</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wiki repository:</span><span class="se">\n\t</span><span class="si">%s</span><span class="se">\n</span><span class="s2">not found in url:</span><span class="se">\n\t</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span>
+              <span class="p">(</span><span class="n">GITHUB_WIKI_REPO</span><span class="p">,</span> <span class="n">std_op</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pull from Wiki repository...&quot;</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;pull&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="s2">&quot;master&quot;</span><span class="p">])</span>
+</pre></div>
+
+
+<p>If using a submodule within a git repository, as the Ardublockly project is, remember to ensure the submodule has been initialised and updated.</p>
+<p>Keep in mind that this function changes the current working directory, so any other function that depends on this value (e.g. using relative directories) might be affected.</p>
+<h3 id="edit-mkdocs-configuration-file">Edit MkDocs configuration file</h3>
+<p>As previously mentioned, MkDocs requires all the markdown files to be listed in the <code>mkdocs.yml</code> file, which is why the <code>pages</code> property was left at the end of it. The following python function scans <code>mkdocs.yml</code> until the <code>pages:</code> line is encountered and it then auto-generates the list:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkstemp</span>
+
+
+<span class="k">def</span> <span class="nf">edit_mkdocs_config</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Edits the mkdocs.yml MkDocs configuration file to include all markdown</span>
+<span class="sd">    files as part of the documentation.</span>
+<span class="sd">    These files are created by default with the &#39;.md&#39; extension and it is </span>
+<span class="sd">    assumed no other file extensions are to be linked.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">,</span> <span class="n">WIKI_NAME</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">):</span>
+            <span class="n">path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;- [&#39;</span><span class="si">%s</span><span class="s2">&#39;, &#39;</span><span class="si">%s</span><span class="s2">&#39;]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">file</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)))</span>
+    <span class="n">pages_str</span> <span class="o">=</span> <span class="s2">&quot;pages:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_list</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Replace the pages data, strategically located at the end of the file</span>
+    <span class="n">mkdocs_yml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">,</span> <span class="s2">&quot;mkdocs.yml&quot;</span><span class="p">)</span>
+    <span class="n">temp_file_handler</span><span class="p">,</span> <span class="n">temp_abs_path</span> <span class="o">=</span> <span class="n">mkstemp</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_abs_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mkdocs_yml</span><span class="p">)</span> <span class="k">as</span> <span class="n">original_file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">original_file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;pages:&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">temp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Replacing &#39;pages&#39; property found in mkdocs.yml ...&quot;</span><span class="p">)</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Did not find the &#39;pages&#39; property in mkdocs.yml.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                      <span class="s2">&quot;Attaching the property at the end of the file.&quot;</span><span class="p">)</span>
+            <span class="n">temp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pages_str</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">pages_str</span><span class="p">)</span>
+
+    <span class="c1"># Remove original file and move the new temp to replace it</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">temp_file_handler</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">mkdocs_yml</span><span class="p">)</span>
+    <span class="n">move</span><span class="p">(</span><span class="n">temp_abs_path</span><span class="p">,</span> <span class="n">mkdocs_yml</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The main three code blocks, separated by a blank line, do the following:</p>
+<ol>
+<li>Scans the wiki repository directory for any file with the <code>.md</code> extension (default for markdown), and adds it to a string for the <code>pages</code> property.</li>
+<li>Creates a temporary file to which it copies all the lines from the original <code>mkdocs.yml</code> file until it reads the <code>pages:</code> line. Once it reaches this line it stops copying and adds the string built on the previous code block.</li>
+<li>Removes the original <code>mkdocs.yml</code> file and replaces it by the newly created file with the updated <code>pages</code> data.</li>
+</ol>
+<h3 id="build-mkdocs">Build MkDocs</h3>
+<p>Similarly to the git procedure, MkDocs will be built using a subprocess. After that, the site folder is moved into a different location, this step is relevant to the current exampli and can be removed, or edited to your own preferences:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+
+<span class="k">def</span> <span class="nf">build_mkdocs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Invokes MkDocs to build the static documentation and moves the folder</span>
+<span class="sd">    into the project root folder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Setting the working directory</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">)</span>
+
+    <span class="c1"># Building the MkDocs project</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;mkdocs&quot;</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Remove root Documentation folder and copy the new site files into it</span>
+    <span class="n">generated_site_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">,</span> <span class="s2">&quot;site&quot;</span><span class="p">)</span>
+    <span class="n">root_documentation_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">THIS_FILE_DIR</span><span class="p">),</span> <span class="s2">&quot;documentation&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Copy folder </span><span class="si">%s</span><span class="s2"> into </span><span class="si">%s</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">generated_site_dir</span><span class="p">,</span> <span class="n">root_documentation_dir</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root_documentation_dir</span><span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">root_documentation_dir</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">generated_site_dir</span><span class="p">,</span> <span class="n">root_documentation_dir</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="add-index-redirect">Add Index redirect</h3>
+<p>GitHub Wiki will create by default a <code>Home</code> article for the homepage with the filename <code>Home.md</code> (article titles are automatically used for their markdown filename). Having an <code>index.md</code> file for MkDocs to automatically set as the <code>index.html</code> page would require having a wiki article titled "Index", which is not a helpul article title for users. So, in order to continue using the GitHub Wiki as intended the build procedure could create an <code>index.html</code> file to redirect to a predefined page.</p>
+<p>For this example the HTML file will redirect to the <code>Home</code> page created from the default 'Home.md' markdown file:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">DEFAULT_INDEX</span> <span class="o">=</span> <span class="s1">&#39;Home&#39;</span>
+
+<span class="k">def</span> <span class="nf">create_index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Creates an HTML index page to redirect to an MkDocs generated page. &quot;&quot;&quot;</span>
+    <span class="n">html_code</span> <span class="o">=</span> \
+        <span class="s2">&quot;&lt;!DOCTYPE HTML&gt;</span><span class="se">\n</span><span class="s2"> &quot;</span> \
+        <span class="s2">&quot;&lt;html&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;head&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;meta charset=</span><span class="se">\&quot;</span><span class="s2">UTF-8</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;meta http-equiv=</span><span class="se">\&quot;</span><span class="s2">refresh</span><span class="se">\&quot;</span><span class="s2"> content=</span><span class="se">\&quot;</span><span class="s2">1;url=</span><span class="si">%s</span><span class="s2">/index.html</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="o">%</span> <span class="n">DEFAULT_INDEX</span> <span class="o">+</span> \
+        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;script type=</span><span class="se">\&quot;</span><span class="s2">text/javascript</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t\t\t</span><span class="s2">window.location.href = </span><span class="se">\&quot;</span><span class="si">%s</span><span class="s2">/index.html</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">DEFAULT_INDEX</span> <span class="o">+</span>\
+        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;/script&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;/head&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;body&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">If you are not redirected automatically to the &quot;</span> \
+        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> page, follow this &lt;a href=</span><span class="se">\&quot;</span><span class="si">%s</span><span class="s2">/index.html</span><span class="se">\&quot;</span><span class="s2">&gt;link&lt;/a&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>\
+        <span class="o">%</span> <span class="p">(</span><span class="n">DEFAULT_INDEX</span><span class="p">,</span> <span class="n">DEFAULT_INDEX</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;/body&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="s2">&quot;&lt;/html&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating the index.html file...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">generated_site_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MKDOCS_DIR</span><span class="p">,</span> <span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+    <span class="n">index_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">generated_site_dir</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">index_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+    <span class="n">index_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The HTML code has been embedded into the Python function, so that it can be reconstructed from scratch without depending on an additional file. This function will create the <code>index.html</code> file at the root of the <code>site</code> folder, and automatically redirect to whatever page has been set in <code>DEFAULT_INDEX</code>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>And we are done! We have a simple way to build offline static documentation from a GitHub Wiki, all easily achieved using Python, Git, and MkDocs!</p>
+<p>Most of the heavy lifting has been done by the fantastic <a href="http://www.mkdocs.org">MkDocs</a>, and the build script created just speeds up the process by pulling the latest changes from the Wiki git repository, updating the MkDocs configuration file, and redirecting your homepage to maintain your GitHub documentation workflow the same.</p>
+<p>For a more practical code example you can have a look at the <a href="https://github.com/carlosperate/ardublockly/blob/d68bce4651fa23a63666b558d7cd4be5336067d5/package/build_docs.py">Ardublockly documentation build script</a>, which also does some error and exception handling for a more robust build process.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- Shariff Button BEGIN -->
+    <div class="shariff"
+        data-button-style="standard"
+        data-lang="en"
+        data-orientation="horizontal"
+        data-services = "[&quot;twitter&quot;, &quot;facebook&quot;, &quot;linkedin&quot;, &quot;reddit&quot;, &quot;pocket&quot;, &quot;whatsapp&quot;]"
+        data-twitter-via="carlosperate"
+        data-url="https:/blog/static-docs-from-github-wiki.html"></div>
+    <!-- Shariff Button END -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row container_footer">
+         <div class="col-xs-9">
+            <p>
+               &copy; 2015 - 2021 <a href="https://twitter.com/carlosperate" target="_blank">carlosperate</a>
+               &middot; Powered by <a href="https://getpelican.com" target="_blank">Pelican</a>
+            </p>
+         </div>
+         <div class="col-xs-3"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+         <div class="col-xs-12">
+            <p><small>                     Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  <!--a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a-->
+
+<br>
+               Attribution for all other resources used can be found <a href="/credits/index.html">here.</a>
+            </small></p>
+         </div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <script src="/theme/js/bodypadding.js"></script>
+
+
+    <!-- add shariff support -->
+    <script src="/theme/js/shariff.min.js"></script>
+
+</body>
+</html>

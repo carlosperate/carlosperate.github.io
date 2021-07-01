@@ -7,10 +7,11 @@ body {
 
 body {
     background-image: url("/images/theme/background_tile.png");
+    background-attachment: fixed;
 }
 
 /* Reduce font size on lower resolutions */
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     html, body {
         font-size: 16px !important;
         line-height: 1.6 !important;
@@ -18,23 +19,33 @@ body {
 }
 
 .page-header {
-    margin-top: 32px;
-    padding-bottom: 0px;
-    margin-bottom: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 16px;
+    padding-bottom: 8px;
     border-bottom: none;
 }
-h1{
-    margin-top: 16px;
-    margin-bottom: 16px;
+/* Anchor links need to account for nav bar padding (pad 64px, marg -48px) */
+header h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
-h2 {
-    margin-top: 48px;
+.entry-content h1 {
+    padding-top: 64px;
+    margin-top: -48px;  /* 16px original -64px anchor */
 }
-h3 {
-    margin-top: 32px;
+.entry-content h2 {
+    padding-top: 64px;
+    margin-top: -16px;  /* 48px original -64px anchor */
 }
-h4 {
-    margin-top: 24px;
+.entry-content h3 {
+    padding-top: 64px;
+    margin-top: -32px; /* 32px original -64px anchor */
+}
+.entry-content h4, h5 {
+    padding-top: 64px;
+    margin-top: -40px; /* 24px original -64px anchor */
+    font-weight: bold;
 }
 
 hr {
@@ -71,13 +82,6 @@ hr {
 
 .tag-4 {
     font-size: 6pt;
-}
-
-#aboutme {
-    padding-top: 0px;
-    padding-bottom: 5px;
-    -ms-word-break: normal;
-    word-break: normal;
 }
 
 a, a:hover {
@@ -182,31 +186,38 @@ figure.floatcenter, .align-center {
 /****************************/
 /* Add shadow */
 .navbar {
-    -webkit-box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Navigation bar drop down */
+ul.nav .dropdown-menu {
+    padding: 0;
+    margin: 0;
+    border-radius: 0px 0px 6px 6px;
+}
+ul.nav .dropdown-menu li {
+}
+ul.nav .dropdown-menu li a {
+    padding: 16px;
+    color: #2c3e50;
 }
 
 /* Navigation bar drop down on mouse over */
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;
 }
-ul.nav li:hover {
-    background-color: #1A242F !important;
+ul.nav .dropdown-menu li:hover {
+    background-color: #2c3e50 !important;
 }
-.dropdown-menu>li>a {
-    color: #1A242F;
-}
-.dropdown-menu>li>a:hover {
-    color: #7b8a8b;
+ul.nav .dropdown-menu li a:hover {
+    color: #FFFFFF;
 }
 
-/* Anchor links need to account for navigation bar padding */
-.anchor {
-    display: block;
-    position: relative;
-    top: -48px;
-    visibility: hidden;
+/* Active list drop down menu */
+ul.nav .dropdown-menu li.active a {
+    color: #FFFFFF;
 }
 
 
@@ -219,7 +230,7 @@ ul.nav li:hover {
     background-attachment: scroll;
     background-size: cover; 
     background-color: #C4C4C4;
-    margin: 0 0 25px;
+    margin: 0;
     padding: 0 0;
     position: relative;
     box-shadow: 0px -15px 10px -10px rgba(0, 0, 0, 0.4) inset;
@@ -255,7 +266,7 @@ ul.nav li:hover {
 }
 
 /* Solutions for mobile and small screens  */
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     #banner {
         margin: 0;
     }
@@ -279,36 +290,111 @@ ul.nav li:hover {
     background-color: #C4C4C4;
     margin: 0;
     position: relative;
-    box-shadow: 0px -15px 10px -10px rgba(0, 0, 0, 0.4) inset;
-    height: 260px;
+    box-shadow: 0px -10px 10px -10px rgba(0, 0, 0, 0.4) inset;
     text-align: center;
+    height: 360px;
 }
+@media (max-width: 1200px) {
+    .carousel-base {
+        height: 360px;
+    }
+}
+@media (max-width: 992px) {
+    .carousel-base {
+        height: 320px;
+    }
+}
+@media (max-width: 750px) {
+    .carousel-base {
+        height: 240px;
+    }
+}
+
 .carousel-indicators {
-    bottom: 0px;
+    bottom: 50px;
 }
+@media (max-width: 767px) {
+    .carousel-indicators {
+        bottom: 24px;
+    }
+}
+
 .carousel-content {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    margin: 0px 15%;
     padding: 0px 0px;
     position: relative;
-    height: 100%;
-    margin-bottom: 120px;
+    height: calc(100% - 48px);
     z-index: 1;
+    color: #fff;
+    text-shadow: 0 0 1px #000000, 0 0 2px #000000;
+    /* The following change with resolution */
+    margin: 0px 20%;
+    line-height: 1.6;
+    font-size: 1.4rem;
 }
 .carousel-content h2 {
-    color: #fff;
-    font-size: 2.6rem;
     font-stretch: condensed;
     font-weight: 700;
-    line-height: 0.9;
+    text-shadow: #000000 0px 0px 24px;
     margin: 0;
-    padding-top: 24px;
+    /* The following change with resolution */
+    font-size: 3.2rem;
+    line-height: 1.6;
+    padding-top: 36px;
     padding-bottom: 12px;
 }
-.carousel-content .fa {
-    padding-right: 16px;
-    font-size: 1.2rem;
+.carousel-content .btn {
+    font-size: 1.0rem;
+    line-height: 1.4;
 }
+.carousel-content .fa,
+.carousel-content .fab {
+    padding-right:12px;
+    font-size: 1.4rem;
+}
+@media (max-width: 1200px) {
+    .carousel-content {
+    }
+    .carousel-content h2 {
+    }
+}
+@media (max-width: 992px) {
+    .carousel-content {
+        margin: 0px 15%;
+        line-height: 1.5;
+        font-size: 1.2rem;
+    }
+    .carousel-content h2 {
+        font-size: 2.8rem;
+        line-height: 1.5;
+        padding-top: 36px;
+        padding-bottom: 12px;
+    }
+}
+@media (max-width: 750px) {
+    .carousel-content {
+        margin: 0px 10%;
+        line-height: 1.2;
+        font-size: 1.0rem;
+    }
+    .carousel-content h2 {
+        font-size: 2.0rem;
+        line-height: 1;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .carousel-content .btn {
+        padding: 6px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+    .carousel-content .fa,
+    .carousel-content .fab {
+        padding-right: 6px;
+        font-size: 1.2rem;
+    }
+}
+
 /* Table used inside relative carousel-content for vertical alignment */
 .table_div {
     display: table;
@@ -316,29 +402,25 @@ ul.nav li:hover {
     width: 100%;
     height: 100%;
     border: none;
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    font-weight: bold;
-    text-shadow: 0 0 1px #000000, 0 0 2px #000000;
+
 }
 .table_row_text {
     display: table-row;
     text-align: center;
     vertical-align: middle;
+    height: 100%;
 }
 .table_row_buttons {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    height: 100%;
+    padding-bottom: 24px;
 }
 
 /* Format the links in the carousel */
 .table_row_text a:hover {
     text-decoration: none;
 }
-
 .table_row_buttons a {
     padding: 8px 16px;
     margin-top: 6px;
@@ -384,7 +466,6 @@ ul.nav li:hover {
     background-size: 32px 32px;
     border-radius: 50%;
     display: block;
-    margin: 15px 0px 0px -2px;
     height: 32px;
     width: 32px;
     float: left;
@@ -413,18 +494,129 @@ ul.nav li:hover {
     padding: 6px 12px;
 }
 
+/*********************************************/
+/* Bottom of the page, after article content */
+/*********************************************/
+#related-posts {
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+/***************/
+/* About Me box*/
+/***************/
+#aboutme {
+    padding-top: 0px;
+    padding-bottom: 5px;
+    -ms-word-break: normal;
+    word-break: normal;
+}
+
+#aboutme-container {
+    border: 2px #fff solid;
+    border-radius: 12px;
+    margin: -90px 20px 0px 20px;
+    padding: 0;
+    overflow: auto;
+    margin-bottom: 36px;
+}
+@media (max-width: 767px) {
+    #aboutme-container {
+        margin: -60px 0px 0px 0px;
+        margin-bottom: 12px;
+    }
+}
+
+#aboutme #avatar {
+    width: 114px;
+    height: 114px;
+    margin: 0px 16px 0px 0px;
+    border-radius: 12px 0px 0px 12px;
+    float: left;
+}
+@media (max-width: 767px) {
+    #aboutme #avatar {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+#aboutme-main-box {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#aboutme-social-box {
+    margin-left: 0px;
+    padding-left: 0px;
+    display: block;
+}
+@media (max-width: 767px) {
+    #aboutme-social-box {
+        display: none;
+    }
+}
+
+#aboutme-social-box-alt {
+    margin: 0px;
+    display: none;
+    margin-bottom: 24px;
+}
+@media (max-width: 767px) {
+    #aboutme-social-box-alt {
+        display: block;
+    }
+}
+
+#aboutme .list-group, #aboutme .list-group-item {
+    background-color: transparent;
+}
+@media (max-width: 767px) {
+    #aboutme .list-group, #aboutme .list-group-item {
+        padding: 6px 2px;
+    }
+}
+
+.aboutme-small-disapear {
+    display: inline;
+}
+.aboutme-small-capitalise {
+    text-transform: lowercase;
+}
+@media (max-width: 767px) {
+    .aboutme-small-disapear {
+        display: none;
+    }
+    .aboutme-small-capitalise {
+        text-transform: capitalize;
+    }
+}
+
+.aboutme-arrow {
+    margin-left: 5px;
+    float: left;
+}
+
 
 /*******************************************************/
 /* Additions to containers due to new background image */
 /*******************************************************/
 .container_body {
-    border-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
     background: #FFFFFF !important;
     padding: 32px 32px;
+    /* box-shadow: 0px 0px 24px 1px rgba(130,130,130,0.72); */
+}
+
+.container_body .highlight pre {
+    margin: 0px -32px 16px -32px;
+    padding: 16px 32px;
+    border-radius: 0px;
+    border: none;
 }
 
 .container_footer {
-    border-radius: 3px;
+    border-radius: 3px 3px 0px 0px;
     background: #FFFFFF !important;
     padding: 16px 32px 0px 32px;
     line-height: 1 !important;
@@ -435,5 +627,103 @@ ul.nav li:hover {
     .container_footer {
         padding-left: 16px !important;
         padding-right: 16px !important;
+    }
+
+    .container_body .highlight pre {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+/**********************/
+/* Overwriting Sharif */
+/**********************/
+.shariff-button {
+    border-radius: 6px;
+}
+
+/*******************/
+/* General Helpers */
+/*******************/
+.full-width {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border: solid 10px #0a0a0a73;
+}
+@media (max-width: 767px) {
+    .full-width {
+        border-width: 6px;
+    }
+}
+
+.wider-than-parent {
+    width: calc(100% + 150px) !important;
+    max-width: calc(100% + 150px) !important;
+    margin-left: -75px;
+    margin-right: -75px;
+    border: solid 10px #0a0a0a80;
+}
+@media (max-width: 1250px) {
+    /* In-between state before content width decreases and */
+    /* this image element no longer fits in the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+}
+@media (max-width: 1200px) {
+    .wider-than-parent {
+        width: calc(100% + 120px) !important;
+        max-width: calc(100% + 120px) !important;
+        position: static;
+        margin-left: -60px;
+        margin-right: -60px;
+    }
+}
+@media (max-width: 1023px) {
+    /* In-between state before content width decreases and */
+    /* this image element no longer fits in the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+}
+@media (max-width: 991px) {
+    .wider-than-parent {
+        width: calc(100% + 120px) !important;
+        max-width: calc(100% + 120px) !important;
+        position: static;
+        margin-left: -60px;
+        margin-right: -60px;
+    }
+}
+@media (max-width: 805px) {
+    /* A bit before the content width change as it stops fitting the viewport */
+    .wider-than-parent {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        border-width: 6px;
     }
 }
