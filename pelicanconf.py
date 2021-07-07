@@ -131,7 +131,8 @@ PLUGINS = [
     'related_posts',
     'pelican_youtube',
     'embed_tweet',
-    'medium_previews'
+    # Don't use the medium scrapper plugin anymore
+    # 'medium_previews'
 ]
 
 ###############################################################################
