@@ -49,12 +49,12 @@ class MediumParserFake(MediumParser):
                 'url': 'http://github.com'
             }, {
                 'title': 'Post two',
-                'thumbnailUrl': '/images/theme/background_tile.png',
+                'thumbnailUrl': '/images/banners/ardublockly_banner.png',
                 'summary': 'This is the text for blog post two',
                 'url': 'http://github.com'
             }, {
                 'title': 'Post three',
-                'thumbnailUrl': '/images/theme/background_tile.png',
+                'thumbnailUrl': '/images/banners/default_banner.jpg',
                 'summary': 'This is the text for blog post three',
                 'url': 'http://github.com'
             }
