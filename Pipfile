@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pelican = ">=4.0.0"
-markdown = "*"
-requests = "*"
-feedparser = "*"
-html2text = "*"
-scrapy = "*"
+pelican = "~=4.0"
+markdown = "~=3.1"
+requests = "~=2.22"
+feedparser = "~=6.0"
+html2text = "~=2020.1"
+scrapy = "~=1.8"
 
 [dev-packages]
 
 [requires]
-python_version = "3"
+python_version = "3.8"
