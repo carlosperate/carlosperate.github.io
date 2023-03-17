@@ -131,7 +131,8 @@ PLUGINS = [
     'related_posts',
     'pelican_youtube',
     'embed_tweet',
-    # Don't use the medium scrapper plugin anymore
+    'social_card',
+    # Don't use the medium scrapper plugin any more
     # 'medium_previews'
 ]
 

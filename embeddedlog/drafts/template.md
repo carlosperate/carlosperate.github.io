@@ -91,6 +91,21 @@ Minimal:
 [[{"YouTube": "8dc4siImaz8"}]]
 
 
+## Adding Social Cards
+
+Here is a social card on its own:
+
+::SocialCard[https://google.com]
+
+Makes sense to add a link at the top as well:
+
+[https://bing.com](https://bing.com)
+
+::SocialCard[https://bing.com]
+
+::SocialCard[https://embeddedlog.com]{"option1": true}
+
+
 ## Adding Code Snippets
 
 Just like any other code snippet in MarkDown:

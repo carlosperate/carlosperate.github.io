@@ -8,6 +8,9 @@ This directory contains hard copies of the pelican pluggins used for the website
     - Updated to work with Markdown, details in its README
 * Embed Tweet: https://github.com/professorsloth/pelican-embed-tweet
     - Updated and expanded for this website, details in its README
+* Social Card
+    - Custom plugin to fetch URLs social media cards during build and add it to
+      the article as static HTML
 * Medium Preview
     - Custom built for this website to include Medium Post previews
     - Quite likely not used any more and not part of the website

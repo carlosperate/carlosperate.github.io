@@ -4,12 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+# Pelin and pelican optional plugins
 pelican = "~=4.0"
 markdown = "~=3.1"
+# These four are only for the medium parser plugin which currently not used
 requests = "~=2.22"
 feedparser = "~=6.0"
 html2text = "~=2020.1"
 scrapy = "~=1.8"
+webpreview = "~=0.37"
 
 [dev-packages]
 
