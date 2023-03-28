@@ -58,10 +58,16 @@ hr {
 
 /* Modifying the article info */
 .post-info > .label {
-  margin-right: 8px;
+    margin-right: 6px;
+    margin-left: 16px;
+    padding: 0.1em 0.4em 0.2em 0.4em;
+    font-size: 80%;
 }
-.published {
-  margin-right: 24px;
+.post-info > .label:first-of-type {
+    margin-left: 0px;
+}
+.post-info > .post-info-data {
+    font-size: 90%;
 }
 
 .tag-0 {

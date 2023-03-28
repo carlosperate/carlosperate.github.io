@@ -157,8 +157,8 @@ MEDIUM_URL = 'https://medium.com/@carlosperate'
 ###############################################################################
 THEME = os.path.join(PROJECT_ROOT, 'themes', 'embeddedlog-theme')
 THEME_STATIC_DIR = 'theme'
-SHOW_ARTICLE_AUTHOR = True
-SHOW_ARTICLE_CATEGORY = True
+SHOW_ARTICLE_AUTHOR = False
+SHOW_ARTICLE_CATEGORY = False
 SHOW_DATE_MODIFIED = True
 
 # CC license offered by the bootstrap theme
