@@ -52,9 +52,6 @@
             {% endif %}
             {% import 'includes/translations.html' as translations with context %}
             {{ translations.translations_for(page) }}
-            {% if PDF_PROCESSOR %}
-                <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">get the pdf</a>
-            {% endif %}
         </header>
         <div class="entry-content">
             {{ page.content }}

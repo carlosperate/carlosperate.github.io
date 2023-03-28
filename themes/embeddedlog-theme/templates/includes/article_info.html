@@ -31,12 +31,6 @@
         <span class="post-info-data"><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></span>
     {% endif %}
 
-    {% if PDF_PROCESSOR %}
-        <span class="label label-default">
-            <a href="{{ SITEURL }}/pdf/{{ article.slug }}.pdf">PDF</a>
-        </span>
-    {% endif %}
-
     {% include 'includes/taglist.html' %}
     {% import 'includes/translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
