@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-import json
 import re
+import json
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 
 from webpreview import web_preview
 
@@ -14,7 +16,7 @@ HTML = """
     display: block;
     height: 122px;
     padding: 0px;
-    margin: 12px 24px;
+    margin: 12px 48px 12px 24px;
     border-width: 1px;
     border-color: #bfbfbf;
     border-style: solid;
@@ -46,21 +48,37 @@ def get_socialcard_entries(content):
     # Filter only the directives for this extension, i.e. ::SocialCard[]{}
     return (e for e in directives if e[0] == MARKDOWN_DIRECTIVE_NAME)
 
+async def get_card(entry, executor):
+    loop = asyncio.get_running_loop()
+    extension_name, url, options = entry
+    result = await loop.run_in_executor(executor, web_preview, url)
+    return (entry, *result)
+
+async def get_all_cards(entries):
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        tasks = [asyncio.ensure_future(get_card(entry, executor)) for entry in entries]
+        all_cards = await asyncio.gather(*tasks)
+        return all_cards
 
 def entries_to_html(entries):
-    entries_html = []
     for entry in entries:
-        if entry[2]:
+        if entry[2]: # We don't really have any options right now, but check anyway
             try:
-                # We don't really any options right now
                 options = json.loads(entry[2])
             except:
                 raise Exception ("SocialCard Markdown option is not valid JSON", entry[2])
-        card = web_preview(entry[1])
+
+    # Get all social media cards asynchronously
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    all_cards = loop.run_until_complete(get_all_cards(entries))
+
+    entries_html = []
+    for card in all_cards:
+        entry, title, description, image = card
         # print("- {}\n\t- {}".format(entry, card))
-        title, description, image = card
         card_options = {
-             "title": title, "description": description, "url": entry[1]
+            "title": title, "description": description, "url": entry[1]
         }
         if not image:
             card_options["img_style"] = "display: none"
@@ -77,10 +95,11 @@ def entries_to_html(entries):
 
 
 def inject_socialcards(content):
-    entries = get_socialcard_entries(content)
-    entries_with_html = entries_to_html(entries)
-    for (entry, html) in entries_with_html:
-        content = content.replace(entry, html)
+    entries = list(get_socialcard_entries(content))
+    if len(entries) > 0:
+        entries_with_html = entries_to_html(entries)
+        for (entry, html) in entries_with_html:
+            content = content.replace(entry, html)
     return content
 
 
