@@ -33,6 +33,10 @@
 <link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
 {% endblock %}
 
+{% block banner %}
+	{% include 'includes/banner.html' %}
+{% endblock %}
+
 {% block breadcrumbs %}
     {% if DISPLAY_BREADCRUMBS %}
     <ol class="breadcrumb">

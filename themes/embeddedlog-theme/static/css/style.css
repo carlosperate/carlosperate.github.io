@@ -18,6 +18,10 @@ body {
     }
 }
 
+article {
+    word-break: break-word;
+}
+
 .page-header {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -240,6 +244,7 @@ ul.nav .dropdown-menu li.active a {
     padding: 0 0;
     position: relative;
     box-shadow: 0px -15px 10px -10px rgba(0, 0, 0, 0.4) inset;
+    box-shadow: 0px -15px 15px -10px rgba(0, 0, 0, 0.4) inset;
 }
 
 #banner .copy {
@@ -293,7 +298,7 @@ ul.nav .dropdown-menu li.active a {
     background-position: top center;
     background-attachment: scroll;
     background-size: cover; 
-    background-color: #C4C4C4;
+    /*background-color: #C4C4C4;*/
     margin: 0;
     position: relative;
     box-shadow: 0px -10px 10px -10px rgba(0, 0, 0, 0.4) inset;
@@ -512,22 +517,20 @@ ul.nav .dropdown-menu li.active a {
 /* About Me box*/
 /***************/
 #aboutme {
-    padding-top: 0px;
-    padding-bottom: 5px;
+    padding: 0px;
     -ms-word-break: normal;
     word-break: normal;
 }
 
-#aboutme-container {
+.aboutme-container {
     border: 2px #fff solid;
     border-radius: 12px;
-    margin: -90px 20px 0px 20px;
+    margin: -90px 20px 36px 20px;
     padding: 0;
     overflow: auto;
-    margin-bottom: 36px;
 }
 @media (max-width: 767px) {
-    #aboutme-container {
+    .aboutme-container {
         margin: -60px 0px 0px 0px;
         margin-bottom: 12px;
     }
@@ -549,7 +552,9 @@ ul.nav .dropdown-menu li.active a {
 
 #aboutme-main-box {
     margin-left: 0px;
+    margin-righ: 0px;
     padding-left: 0px;
+    padding-right: 0px;
 }
 
 #aboutme-social-box {
@@ -601,6 +606,64 @@ ul.nav .dropdown-menu li.active a {
 .aboutme-arrow {
     margin-left: 5px;
     float: left;
+}
+
+/********************************/
+/* Article title + bread crumps */
+/********************************/
+.container-blurry {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,.55);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+.container-blurry h1 {
+    margin: 20px;
+}
+.aboutme-container .new-breadcrump {
+    margin: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+#article-title-breadcrumps .aboutme-container {
+    margin: -90px 0 36px 0;
+    /* First shadow has been removed using alpha=0, but easy to add again*/
+    box-shadow: rgba(17, 17, 26, 0.0) 0px 0px 16px,
+        -5px -8px 15px -3px rgba(0,0,0,0.2),
+        6px -9px 15px -3px rgba(0,0,0,0.2);
+}
+
+/***********************************/
+/* Overwrite Bootstrap breadcrumps */
+/***********************************/
+.new-breadcrump {
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    margin-bottom: 21px;
+    border-radius: 4px;
+}
+@media (max-width: 992px) {
+    .new-breadcrump {
+        flex-direction: column;
+    }
+    .breadcrump-labels label {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 750px) {
+    .breadcrump-labels .post-info-data:after {
+        content: '';
+        display: block;
+    }
+    .breadcrump-labels .label {
+        margin-left: 0px;
+    }
+}
+.new-breadcrump .breadcrumb {
+    margin: 0px;
+    padding: 0px;
 }
 
 

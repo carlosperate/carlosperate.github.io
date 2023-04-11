@@ -1,0 +1,23 @@
+<style>
+    #banner{
+        background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0)
+        ),
+        {% if article and article.banner_image %}
+        url("{{ SITEURL}}/images/banners/{{ article.banner_image }}");
+        {% else %}
+        url("{{ SITEURL}}/{{ BANNER }}");
+        {% endif %}
+    }
+</style>
+
+<div id="banner">
+    <div id="carousel-projects" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active carousel-base carousel-one"></div>
+        </div>
+    </div>
+</div>

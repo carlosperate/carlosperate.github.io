@@ -103,7 +103,6 @@ DEFAULT_CATEGORY = 'Blog'
 SUMMARY_MAX_LENGTH = 50    # In words
 
 # Banner/Carousel in pages
-BANNER_ALL_PAGES = True
 BANNER = 'images/banners/default_banner.jpg'
 BANNER_SUBTITLE = 'This is my subtitle'
 
