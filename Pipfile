@@ -12,7 +12,7 @@ requests = "~=2.22"
 feedparser = "~=6.0"
 html2text = "~=2020.1"
 scrapy = "~=1.8"
-webpreview = "~=0.37"
+webpreview = "~=1.7"
 
 [dev-packages]
 
