@@ -709,10 +709,21 @@ ul.nav .dropdown-menu li.active a {
 /**********************/
 /* Overwriting Sharif */
 /**********************/
+/* Sharif aligns to the left, so center it */
+.shariff {
+    text-align: center;
+}
+.shariff ul {
+    place-content: center;
+}
+/* Set a nice border-radius */
 .shariff-button {
     border-radius: 6px !important;
 }
-/* Sharif sets max width 160px, too wide with too much space inside the button. */
+.shariff li .share_text {
+    text-transform: lowercase;
+}
+/* Sharif sets max width 160px, too wide with too much empty space inside buttons. */
 @media only screen and (min-width: 768px) {
     .shariff .orientation-horizontal.button-style-standard li {
         min-width: 100px !important;
@@ -722,10 +733,13 @@ ul.nav .dropdown-menu li.active a {
         font-size: 24px !important;
     }
 }
-/* Sharif sets this to 30px, which looks weird, reset to the default. */
+/* Sharif decreases the height to 30px, which looks weird, reset to the 768px value. */
 @media only screen and (min-width: 1024px) {
     .shariff li,.shariff li a {
         height: auto !important;
+    }
+    .shariff li .share_text {
+        font-size: 14px !important;
     }
     .shariff li .fab,.shariff li .far,.shariff li .fas {
         width: 35px !important;
