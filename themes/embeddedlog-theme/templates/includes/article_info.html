@@ -1,16 +1,16 @@
 <div class="post-info">
-    <span class="label label-default">Date&nbsp;&nbsp;<i class="fa fa-calendar"></i></span>
+    <span class="label label-default">Created&nbsp;&nbsp;<i class="fa fa-calendar"></i></span>
     <span class="published post-info-data">
         <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
     </span>
-    {% if SHOW_DATE_MODIFIED %}
-        {% if article.modified %}
-            <span class="label label-default">Modified&nbsp;&nbsp;<i class="fa fa-calendar"></i></span>
-            <span class="modified post-info-data">
-                <time datetime="{{ article.modified.isoformat() }}"> {{ article.locale_modified }}</time>
-            </span>
-        {% endif %}
+    {% if SHOW_DATE_MODIFIED and article.modified%}
+        <span class="label label-default">Updated&nbsp;&nbsp;<i class="fa fa-calendar"></i></span>
+        <span class="modified post-info-data">
+            <time datetime="{{ article.modified.isoformat() }}"> {{ article.locale_modified }}</time>
+        </span>
     {% endif %}
+    <span class="label label-default"><i class="fa fa-clock"></i></span>
+    <span class="published post-info-data">3 min</span>
 
     {% if SHOW_SERIES %}
         {% if article.series %}
@@ -31,7 +31,6 @@
         <span class="post-info-data"><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></span>
     {% endif %}
 
-    {% include 'includes/taglist.html' %}
     {% import 'includes/translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
 </div><!-- /.post-info -->
