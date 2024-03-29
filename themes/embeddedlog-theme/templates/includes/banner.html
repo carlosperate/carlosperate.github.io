@@ -1,36 +1,42 @@
 <style>
     #banner{
         background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0)
-        ),
+            linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0)
+            ),
         url("{{ SITEURL}}/{{ BANNER }}");
     }
-    .carousel-one{
+    {% if not page or (page and page.carousel == "0") %}
+    .carousel-zero {
         background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0)
-        ),
+            linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0)
+            ),
         url("{{ SITEURL}}/images/banners/ardublockly_banner.png");
     }
-    .carousel-two{
+    {% endif %}
+    {% if not page or (page and page.carousel == "1") %}
+    .carousel-one {
         background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0)
-        ),
+            linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0)
+            ),
         url("{{ SITEURL}}/images/banners/default_banner.jpg");
     }
-    .carousel-three{
+    {% endif %}
+    {% if not page or (page and page.carousel == "2") %}
+    .carousel-two {
         background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0)
-        ),
+            linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0)
+            ),
         url("{{ SITEURL}}/images/banners/quickhue_banner.png");
     }
+    {% endif %}
 </style>
 
 <div id="banner">
@@ -44,7 +50,8 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active carousel-base carousel-one">
+            {% if not page or (page and page.carousel == "0") %}
+            <div class="item active carousel-base carousel-zero">
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
@@ -59,7 +66,9 @@
                     </div>
                 </div>
             </div>
-            <div class="item carousel-base carousel-two">
+            {% endif %}
+            {% if not page or (page and page.carousel == "1") %}
+            <div class="item carousel-base carousel-one">
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
@@ -74,7 +83,9 @@
                     </div>
                 </div>
             </div>
-            <div class="item carousel-base carousel-three">
+            {% endif %}
+            {% if not page or (page and page.carousel == "2") %}
+            <div class="item carousel-base carousel-two">
                 <div class="carousel-content">
                     <div class="table_div">
                         <div class="table_row_text">
@@ -89,6 +100,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <!-- Controls -->
