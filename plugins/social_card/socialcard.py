@@ -16,23 +16,24 @@ HTML = """
     display: block;
     height: 122px;
     padding: 0px;
-    margin: 12px 48px 12px 24px;
+    margin: 16px;
     border-width: 1px;
     border-color: #bfbfbf;
     border-style: solid;
-    border-radius: 6px;
+    border-radius: 60px;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 7%);
     overflow: hidden;
+    background-color: #fbfbfb;
 ">
-    <div style="float: left; padding: 0; margin: 0; max-width: 192px; margin-right: 16px;{img_style}">
+    <div style="float: left; padding: 0; margin: 0; max-width: 192px;{img_style}">
         <a href="{url}" target="_blank" style="border: none">
-            <img src="{image}" style="height: 120px; object-fit: cover; padding: 0; margin: 0; border: none; margin-right: 16px;">
+            <img src="{image}" style="height: 120px; max-width: 150px; object-fit: cover; padding: 0; margin: 0; border: none; margin-right: 16px;">
         </a>
     </div>
-    <div style="margin: 16px; line-height: 1.2;">
+    <div style="margin: 8px 24px; line-height: 1.2;">
         <a href="{url}" target="_blank"><span style="font-weight: bold;line-height: 1.8;">{title}</span></a>
         <br>
-        <span style="line-height: 1.5">{description}</span>
+        <span style="font-size: calc(100% - 1px); line-height: 1.5;">{description}</span>
     </div>
 </div>
 """
@@ -55,10 +56,11 @@ async def get_card(entry, executor):
     return (entry, *result)
 
 async def get_all_cards(entries):
+    all_cards = []
     with ThreadPoolExecutor(max_workers=10) as executor:
         tasks = [asyncio.ensure_future(get_card(entry, executor)) for entry in entries]
         all_cards = await asyncio.gather(*tasks)
-        return all_cards
+    return all_cards
 
 def entries_to_html(entries):
     for entry in entries:
