@@ -14,4 +14,5 @@ This directory contains hard copies of the pelican pluggins used for the website
 * Medium Preview
     - Custom built for this website to include Medium Post previews
     - Quite likely not used any more and not part of the website
-    - The `scrapy` dependency is needed and not installed by default in this project
+    - The `scrapy`, `html2text`, `feedparser` and `requests `dependencies
+      are needed, but they are not installed by default in this project
