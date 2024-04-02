@@ -11,7 +11,6 @@ markdown = "~=3.1"
 requests = "~=2.22"
 feedparser = "~=6.0"
 html2text = "~=2020.1"
-scrapy = "~=2.11"
 webpreview = "~=1.7"
 
 [dev-packages]
